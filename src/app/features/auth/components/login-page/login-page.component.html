@@ -1,0 +1,19 @@
+<div class="relative min-h-screen flex items-center justify-center bg-gray-50">
+  <app-lang-switcher class="absolute top-4 right-4"> </app-lang-switcher>
+
+  <app-login-form
+    [texts]="i18nService.texts()"
+    [isLoading]="authService.isLoading()"
+    [apiError]="translatedApiError()"
+    (submitLogin)="onLoginAttempt($event)"
+  >
+    <div class="mt-6 text-center text-sm text-gray-600">
+      <a
+        [routerLink]="['/', routes.auth.register]"
+        class="font-medium text-blue-600 cursor-pointer transition-colors hover:text-blue-500 hover:underline"
+      >
+        {{ i18nService.texts().auth.login.noAccountLink }}
+      </a>
+    </div>
+  </app-login-form>
+</div>
