@@ -1,11 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../../core/auth/auth.service';
-import { LoginRequestDto } from '../../../../core/auth/dto/requests/login-request.dto';
-import { APP_ROUTES } from '../../../../core/constants/app-routes.constant';
-import { I18nService } from '../../../../core/i18n/i18n.service';
-import { LangSwitcherComponent } from '../../../lang-switcher/lang-switcher.component';
-import { LoginFormComponent } from '../login-form/login-form.component';
+import { AuthService } from '../../../core/auth/auth.service';
+import { LoginRequestDto } from '../../../core/auth/dto/requests/login-request.dto';
+import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
+import { I18nService } from '../../../core/i18n/i18n.service';
+import { LoginFormComponent } from '../../../features/auth/components/login-form/login-form.component';
+import { LangSwitcherComponent } from '../../../features/i18n/components/lang-switcher/lang-switcher.component';
 
 @Component({
   imports: [LoginFormComponent, LangSwitcherComponent, RouterLink],
