@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { IconComponent } from '../../../../shared/components/icon/icon.component';
-import { ICON_NAMES } from '../../../../shared/constants/icons.constant';
+import { ICON_NAMES } from '../../../../shared/components/icon/icons.constant';
 import { TranslationDict } from '../../../../shared/i18n/translation.type';
 import { SCORE_COLORS } from './password-strength-meter.constant';
 

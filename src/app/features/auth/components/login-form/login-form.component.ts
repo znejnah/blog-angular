@@ -1,19 +1,13 @@
 import { Component, input, output, signal } from '@angular/core';
-import {
-  debounce,
-  email,
-  form,
-  FormField,
-  minLength,
-  required,
-  ValidationError,
-} from '@angular/forms/signals';
-
+import { debounce, form, minLength, pattern, required } from '@angular/forms/signals';
 import { LoginRequestDto } from '../../../../core/auth/dto/requests/login-request.dto';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { CardComponent } from '../../../../shared/components/card/card.component';
+import { FormInputComponent } from '../../../../shared/components/form-input/form-input.component';
 import { TranslationDict } from '../../../../shared/i18n/translation.type';
 
 @Component({
-  imports: [FormField],
+  imports: [CardComponent, FormInputComponent, ButtonComponent],
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
 })
@@ -32,35 +26,14 @@ export class LoginFormComponent {
   readonly loginForm = form(this.loginModel, (schemaPath) => {
     debounce(schemaPath.email, 500);
     required(schemaPath.email);
-    email(schemaPath.email);
+    pattern(schemaPath.email, /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
     required(schemaPath.password);
     minLength(schemaPath.password, 8);
   });
 
-  getErrMsg(error: ValidationError): string {
-    if (!error?.kind) return '';
-
-    const { messages, templates } = this.texts().validation;
-
-    if (error.kind in messages) {
-      return messages[error.kind as keyof typeof messages];
-    }
-
-    if (error.kind in templates) {
-      const templateFunction = templates[error.kind as keyof typeof templates];
-      const errObj = error as Record<string, any>;
-      const paramVal: number = errObj[error.kind];
-
-      return templateFunction(paramVal);
-    }
-
-    return error.kind;
-  }
-
   onSubmit(): void {
     if (this.loginForm().invalid()) return;
-
     this.submitLogin.emit(this.loginModel());
   }
 }

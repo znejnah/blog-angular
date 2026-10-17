@@ -1,16 +1,16 @@
-import { Component, computed, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, computed, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 import { LoginRequestDto } from '../../../core/auth/dto/requests/login-request.dto';
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
+import { ForgotPasswordTrollComponent } from '../../../features/auth/components/forgot-password-troll/forgot-password-troll.component';
 import { LoginFormComponent } from '../../../features/auth/components/login-form/login-form.component';
-import { LangSwitcherComponent } from '../../../features/i18n/components/lang-switcher/lang-switcher.component';
+import { TextLinkComponent } from '../../../shared/components/text-link/text-link.component';
 
 @Component({
-  imports: [LoginFormComponent, LangSwitcherComponent, RouterLink],
+  imports: [LoginFormComponent, ForgotPasswordTrollComponent, TextLinkComponent],
   selector: 'app-login-page',
-  styles: '',
   templateUrl: './login-page.component.html',
 })
 export class LoginPageComponent {
@@ -28,6 +28,20 @@ export class LoginPageComponent {
     return dict[errCode as keyof typeof dict] ?? dict['UNKNOWN_ERROR'];
   });
 
+  readonly isTrolling = signal(false);
+
+  constructor() {
+    this.authService.clearError();
+  }
+
+  triggerTroll(): void {
+    this.isTrolling.set(true);
+
+    // setTimeout(() => {
+    //   this.isTrolling.set(false);
+    // }, 3000);
+  }
+
   async onLoginAttempt(loginDto: LoginRequestDto): Promise<void> {
     const success = await this.authService.login(loginDto);
 
@@ -36,7 +50,11 @@ export class LoginPageComponent {
     if (success) {
       console.log('LOGIN => DASHBOARD');
       // TECH DEBT : IMPLEMENT ROUTING WHEN PAGE EXIST
-      // this.router.navigate(['/', this.routes.dashboard]);
+      this.router.navigate(['/', this.routes.dashboard.root], { replaceUrl: true });
     }
+  }
+
+  onRegisterLinkSubmit(): void {
+    this.router.navigate(['/', this.routes.auth.register], { replaceUrl: true });
   }
 }
