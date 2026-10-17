@@ -74,7 +74,6 @@ export class AuthService {
       const url = this.baseUrl + endpoint;
       const response = await firstValueFrom(this.http.post<LoginResponseDto>(url, payload));
 
-      console.log('RESPONSE :', response);
       localStorage.setItem(STORAGE_KEYS.accessToken, response.accessToken);
       localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(response.user));
       this._currentUser.set(response.user);

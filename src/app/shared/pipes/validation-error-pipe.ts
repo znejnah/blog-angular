@@ -7,7 +7,6 @@ import { TranslationDict } from '../i18n/translation.type';
 })
 export class ValidationErrorPipe implements PipeTransform {
   transform(error: ValidationError, texts: TranslationDict): string {
-    console.log(error.kind);
     if (!error?.kind) return '';
 
     const { messages, templates } = texts.validation;
