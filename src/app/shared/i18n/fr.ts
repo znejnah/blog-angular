@@ -1,4 +1,5 @@
 import { AuthError } from '../../core/auth/enums/auth-error.enum';
+import { VALIDATION_ERRORS } from '../constants/validation-errors.constant';
 import { TranslationDict } from './translation.type';
 
 export const fr: TranslationDict = {
@@ -47,9 +48,9 @@ export const fr: TranslationDict = {
   },
   validation: {
     messages: {
-      required: 'Ce champ est obligatoire.',
-      pattern: "Le format saisi n'est pas valide.",
-      passwordMismatch: 'Les mots de passe ne correspondent pas.',
+      [VALIDATION_ERRORS.REQUIRED]: 'Ce champ est obligatoire.',
+      [VALIDATION_ERRORS.PATTERN]: "Le format saisi n'est pas valide.",
+      [VALIDATION_ERRORS.PASSWORD_MISMATCH]: 'Les mots de passe ne correspondent pas.',
     },
     templates: {
       minLength: (min) => `Au moins ${min} caractères requis.`,

@@ -1,11 +1,11 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { FieldState, FormField } from '@angular/forms/signals';
+import { FORM_STYLES } from '../../constants/form-styles.constant';
 import { TranslationDict } from '../../i18n/translation.type';
 import { ValidationErrorPipe } from '../../pipes/validation-error-pipe';
 import { IconComponent } from '../icon/icon.component';
 import { ICON_NAMES } from '../icon/icons.constant';
 import { FormInputType, INPUT_TYPES } from './form-input.type';
-import { FORM_STYLES } from './form-styles.constant';
 
 @Component({
   imports: [FormField, ValidationErrorPipe, IconComponent],

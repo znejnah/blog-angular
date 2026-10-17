@@ -1,4 +1,5 @@
 import { AuthError } from '../../core/auth/enums/auth-error.enum';
+import { VALIDATION_ERRORS } from '../constants/validation-errors.constant';
 
 export type TranslationDict = {
   common: {
@@ -46,9 +47,9 @@ export type TranslationDict = {
   };
   validation: {
     messages: {
-      required: string;
-      pattern: string;
-      passwordMismatch: string;
+      [VALIDATION_ERRORS.REQUIRED]: string;
+      [VALIDATION_ERRORS.PATTERN]: string;
+      [VALIDATION_ERRORS.PASSWORD_MISMATCH]: string;
     };
     templates: {
       minLength: (min: number) => string;
