@@ -1,5 +1,10 @@
 export const APP_ROUTES = {
   auth: {
-    login: 'auth/login',
+    root: 'auth',
+    login: 'login',
+    register: 'register',
+  },
+  dashboard: {
+    root: 'dashboard',
   },
 };
