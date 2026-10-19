@@ -1,0 +1,66 @@
+<app-card [title]="texts().auth.register.title" [error]="apiError()">
+  <form (submit)="$event.preventDefault(); onSubmit()" class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <app-form-input
+        [field]="registerForm.firstname()"
+        [texts]="texts()"
+        [label]="texts().common.fields.firstnameLabel"
+        [placeholder]="texts().common.fields.firstnamePlaceholder"
+      >
+      </app-form-input>
+
+      <app-form-input
+        [field]="registerForm.lastname()"
+        [texts]="texts()"
+        [label]="texts().common.fields.lastnameLabel"
+        [placeholder]="texts().common.fields.lastnamePlaceholder"
+      >
+      </app-form-input>
+    </div>
+
+    <app-form-input
+      type="email"
+      [field]="registerForm.email()"
+      [texts]="texts()"
+      [label]="texts().common.fields.emailLabel"
+      [placeholder]="texts().common.fields.emailPlaceholder"
+    >
+    </app-form-input>
+
+    <div>
+      <app-form-input
+        type="password"
+        [field]="registerForm.password()"
+        [texts]="texts()"
+        [label]="texts().common.fields.passwordLabel"
+        placeholder="••••••••"
+      >
+      </app-form-input>
+      <app-password-strength-meter
+        [texts]="texts()"
+        [password]="registerModel().password"
+      ></app-password-strength-meter>
+    </div>
+
+    <!-- COMMENT THIS BLOC IF/WHEN CLIENT CHANGE HIS MIND ABOUT CONFIRM PASSWORD  -->
+    <app-form-input
+      type="password"
+      [field]="registerForm.confirmPassword()"
+      [texts]="texts()"
+      [label]="texts().common.fields.confirmPasswordLabel"
+      placeholder="••••••••"
+    >
+    </app-form-input>
+    <!-- END OF BLOC -->
+
+    <app-button
+      type="submit"
+      [disabled]="registerForm().invalid()"
+      [isLoading]="isLoading()"
+      [texts]="texts()"
+    >
+      {{ texts().auth.register.submitBtn }}
+    </app-button>
+  </form>
+  <ng-content></ng-content>
+</app-card>

@@ -1,0 +1,12 @@
+<div class="flex gap-2">
+  @for (lang of i18nService.supportedLanguages; track lang.code) {
+    <button
+      (click)="i18nService.setLanguage(lang.code)"
+      class="text-sm cursor-pointer transition-colors hover:text-gray-900"
+      [class.font-bold]="i18nService.currentLang() === lang.code"
+      [class.text-gray-500]="i18nService.currentLang() !== lang.code"
+    >
+      {{ lang.label }}
+    </button>
+  }
+</div>

@@ -1,0 +1,16 @@
+<app-login-form
+  [texts]="i18nService.texts()"
+  [isLoading]="authService.isLoading()"
+  [apiError]="translatedApiError()"
+  (submitLogin)="onLoginAttempt($event)"
+  class="w-full"
+>
+  <div class="mt-6 text-center text-sm text-gray-600">
+    <app-forgot-password-troll />
+  </div>
+  <div class="mt-6 text-center text-sm text-gray-600">
+    <app-text-link [to]="['/', routes.auth.root, routes.auth.register]">{{
+      i18nService.texts().auth.login.noAccountLink
+    }}</app-text-link>
+  </div>
+</app-login-form>
