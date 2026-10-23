@@ -1,13 +1,13 @@
 import { Component, input, output, signal } from '@angular/core';
 import { form, minLength, pattern, required, validate } from '@angular/forms/signals';
 import { RegisterRequestDto } from '../../../../core/auth/dto/requests/register-request.dto';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { CardComponent } from '../../../../shared/components/card/card.component';
-import { FormInputComponent } from '../../../../shared/components/form-input/form-input.component';
 import { REGEX_PATTERNS } from '../../../../shared/constants/regex.constant';
 import { VALIDATION_ERRORS } from '../../../../shared/constants/validation-errors.constant';
 import { VALIDATION_RULES } from '../../../../shared/constants/validation-rules.constant';
-import { TranslationDict } from '../../../../shared/i18n/translation.type';
+import { TranslationDict } from '../../../../core/i18n/translation.type';
+import { ButtonComponent } from '../../../../shared/ui/components/button/button.component';
+import { CardComponent } from '../../../../shared/ui/components/card/card.component';
+import { FormInputComponent } from '../../../../shared/ui/components/form-input/form-input.component';
 import { PasswordStrengthMeterComponent } from '../password-strength-meter/password-strength-meter.component';
 
 type RegisterFormModel = RegisterRequestDto & {

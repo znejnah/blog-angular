@@ -1,12 +1,12 @@
 import { Component, input, output, signal } from '@angular/core';
 import { debounce, form, pattern, required } from '@angular/forms/signals';
 import { LoginRequestDto } from '../../../../core/auth/dto/requests/login-request.dto';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { CardComponent } from '../../../../shared/components/card/card.component';
-import { FormInputComponent } from '../../../../shared/components/form-input/form-input.component';
+import { TranslationDict } from '../../../../core/i18n/translation.type';
 import { REGEX_PATTERNS } from '../../../../shared/constants/regex.constant';
 import { UI_TIMING } from '../../../../shared/constants/timings.constant';
-import { TranslationDict } from '../../../../shared/i18n/translation.type';
+import { ButtonComponent } from '../../../../shared/ui/components/button/button.component';
+import { CardComponent } from '../../../../shared/ui/components/card/card.component';
+import { FormInputComponent } from '../../../../shared/ui/components/form-input/form-input.component';
 
 @Component({
   imports: [CardComponent, FormInputComponent, ButtonComponent],
