@@ -1,7 +1,7 @@
-import { ButtonVariant } from './button.type';
+import { ButtonVariant } from '../../types/button.type';
 
 export const BUTTON_BASE_CLASS =
-  'w-full flex justify-center items-center py-2 px-4 rounded-md transition-colors cursor-pointer';
+  'w-full flex justify-center items-center py-2 px-4 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
 
 export const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',

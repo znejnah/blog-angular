@@ -1,14 +1,14 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { FieldState, FormField } from '@angular/forms/signals';
+import { TranslationDict } from '../../../../core/i18n/translation.type';
+import { ValidationErrorPipe } from '../../../pipes/validation-error-pipe';
 import { FORM_STYLES } from '../../constants/form-styles.constant';
-import { TranslationDict } from '../../i18n/translation.type';
-import { ValidationErrorPipe } from '../../pipes/validation-error-pipe';
-import { IconComponent } from '../icon/icon.component';
+import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { ICON_NAMES } from '../icon/icons.constant';
 import { FormInputType, INPUT_TYPES } from './form-input.type';
 
 @Component({
-  imports: [FormField, ValidationErrorPipe, IconComponent],
+  imports: [FormField, ValidationErrorPipe, IconButtonComponent],
   selector: 'app-form-input',
   templateUrl: './form-input.component.html',
 })

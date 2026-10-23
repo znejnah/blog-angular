@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { APP_ICONS, IconName } from './icons.constant';
+import { IconName } from './icons.constant';
 
 @Component({
   imports: [],
@@ -9,5 +9,5 @@ import { APP_ICONS, IconName } from './icons.constant';
 })
 export class IconComponent {
   name = input.required<IconName>();
-  readonly path = computed(() => APP_ICONS[this.name()]);
+  readonly path = computed(() => `url(assets/icons/${this.name()}.svg)`);
 }

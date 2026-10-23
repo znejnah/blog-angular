@@ -1,10 +1,11 @@
 import { Component, computed, input } from '@angular/core';
-import { TranslationDict } from '../../i18n/translation.type';
+import { BUTTON_TYPES, BUTTON_VARIANT, ButtonType, ButtonVariant } from '../../types/button.type';
+import { IconComponent } from '../icon/icon.component';
+import { ICON_NAMES } from '../icon/icons.constant';
 import { BUTTON_BASE_CLASS, BUTTON_VARIANT_CLASSES } from './button.constant';
-import { BUTTON_TYPES, BUTTON_VARIANT, ButtonType, ButtonVariant } from './button.type';
 
 @Component({
-  imports: [],
+  imports: [IconComponent],
   selector: 'app-button',
   templateUrl: './button.component.html',
 })
@@ -13,8 +14,9 @@ export class ButtonComponent {
   variant = input<ButtonVariant>(BUTTON_VARIANT.PRIMARY);
   disabled = input<boolean>(false);
   isLoading = input<boolean>(false);
-  texts = input.required<TranslationDict>();
+  loadingText = input<string>();
 
+  readonly iconNames = ICON_NAMES;
   readonly isDisabled = computed(() => this.disabled() || this.isLoading());
 
   readonly buttonClasses = computed(

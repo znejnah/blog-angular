@@ -8,5 +8,5 @@ import { RouterLink } from '@angular/router';
 })
 export class TextLinkComponent {
   to = input.required<string | any[]>();
-  replace = input<boolean>(true);
+  replaceUrl = input<boolean>(true);
 }
