@@ -7,4 +7,7 @@ export const APP_ROUTES = {
   dashboard: {
     root: 'dashboard',
   },
+  home: {
+    root: 'home',
+  },
 };
