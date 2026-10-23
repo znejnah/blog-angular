@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { computed, inject, Service, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { User } from '../../shared/models/user.model';
+import { APP_ROUTES } from '../constants/app-routes.constant';
 import { STORAGE_KEYS } from '../constants/storage-keys.constant';
+import { User } from '../models/user.model';
 import { API_URL } from '../tokens/api-url.token';
 import { AUTH_ENDPOINTS } from './constants/auth-endpoints.constant';
 import { LOGIN_ERROR_MAP, REGISTER_ERROR_MAP } from './constants/auth-error-map.constant';
@@ -15,6 +17,7 @@ import { AuthError } from './enums/auth-error.enum';
 @Service()
 export class AuthService {
   private http = inject(HttpClient);
+  private readonly router = inject(Router);
   readonly baseUrl = inject(API_URL);
 
   private readonly _isLoading = signal<boolean>(false);
@@ -56,6 +59,8 @@ export class AuthService {
     localStorage.removeItem(STORAGE_KEYS.accessToken);
     localStorage.removeItem(STORAGE_KEYS.currentUser);
     this._currentUser.set(null);
+    this._error.set(null);
+    this.router.navigate(['/', APP_ROUTES.auth.root, APP_ROUTES.auth.login], { replaceUrl: true });
   }
 
   private async executeAuthRequest<T>(
@@ -77,6 +82,7 @@ export class AuthService {
       localStorage.setItem(STORAGE_KEYS.accessToken, response.accessToken);
       localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(response.user));
       this._currentUser.set(response.user);
+      this.router.navigate(['/', APP_ROUTES.home.root], { replaceUrl: true });
       return true;
     } catch (error: unknown) {
       if (error instanceof HttpErrorResponse) {

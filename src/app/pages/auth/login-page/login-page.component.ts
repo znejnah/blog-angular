@@ -6,7 +6,7 @@ import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
 import { ForgotPasswordTrollComponent } from '../../../features/auth/components/forgot-password-troll/forgot-password-troll.component';
 import { LoginFormComponent } from '../../../features/auth/components/login-form/login-form.component';
-import { TextLinkComponent } from '../../../shared/components/text-link/text-link.component';
+import { TextLinkComponent } from '../../../shared/ui/components/text-link/text-link.component';
 
 @Component({
   imports: [LoginFormComponent, ForgotPasswordTrollComponent, TextLinkComponent],
@@ -36,25 +36,9 @@ export class LoginPageComponent {
 
   triggerTroll(): void {
     this.isTrolling.set(true);
-
-    // setTimeout(() => {
-    //   this.isTrolling.set(false);
-    // }, 3000);
   }
 
   async onLoginAttempt(loginDto: LoginRequestDto): Promise<void> {
-    const success = await this.authService.login(loginDto);
-
-    console.log('Success :', success);
-
-    if (success) {
-      console.log('LOGIN => DASHBOARD');
-      // TECH DEBT : IMPLEMENT ROUTING WHEN PAGE EXIST
-      this.router.navigate(['/', this.routes.dashboard.root], { replaceUrl: true });
-    }
-  }
-
-  onRegisterLinkSubmit(): void {
-    this.router.navigate(['/', this.routes.auth.register], { replaceUrl: true });
+    await this.authService.login(loginDto);
   }
 }

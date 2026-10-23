@@ -5,7 +5,7 @@ import { RegisterRequestDto } from '../../../core/auth/dto/requests/register-req
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
 import { RegisterFormComponent } from '../../../features/auth/components/register-form/register-form.component';
-import { TextLinkComponent } from '../../../shared/components/text-link/text-link.component';
+import { TextLinkComponent } from '../../../shared/ui/components/text-link/text-link.component';
 
 @Component({
   imports: [RegisterFormComponent, TextLinkComponent],
@@ -32,10 +32,6 @@ export class RegisterPageComponent {
   }
 
   async onRegisterAttempt(registerDto: RegisterRequestDto): Promise<void> {
-    const success = await this.authService.register(registerDto);
-  }
-
-  onLoginLinkSubmit(): void {
-    this.router.navigate(['/', this.routes.auth.login], { replaceUrl: true });
+    await this.authService.register(registerDto);
   }
 }
