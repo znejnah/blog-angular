@@ -49,6 +49,10 @@ export const fr: TranslationDict = {
       },
     },
   },
+  home: {
+    title: 'À la une',
+    subtitle: 'Découvrez les dernières publications.',
+  },
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: 'Ce champ est obligatoire.',

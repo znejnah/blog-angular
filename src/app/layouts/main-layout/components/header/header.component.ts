@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { I18nService } from '../../../../core/i18n/i18n.service';
+import { LayoutStateService } from '../../../../core/layout/layout-state.service';
 import { LangSwitcherComponent } from '../../../../features/i18n/components/lang-switcher/lang-switcher.component';
 import { IconButtonComponent } from '../../../../shared/ui/components/icon-button/icon-button.component';
 import { ICON_NAMES, IconName } from '../../../../shared/ui/components/icon/icons.constant';
@@ -13,6 +14,9 @@ import { ICON_NAMES, IconName } from '../../../../shared/ui/components/icon/icon
 export class HeaderComponent {
   readonly authService = inject(AuthService);
   readonly i18nService = inject(I18nService);
+  readonly layoutStateService = inject(LayoutStateService);
+
+  readonly pageTitle = input.required<string>();
 
   readonly userInitials = computed(() => {
     const user = this.authService.currentUser();

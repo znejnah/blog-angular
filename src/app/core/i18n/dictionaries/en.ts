@@ -49,6 +49,10 @@ export const en: TranslationDict = {
       },
     },
   },
+  home: {
+    title: 'News',
+    subtitle: 'Discover latest news.',
+  },
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: 'This field is required.',

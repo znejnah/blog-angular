@@ -7,6 +7,8 @@ export const ICON_NAMES = {
   LOGOUT: 'logout',
   HOME: 'home',
   DASHBOARD: 'dashboard',
+  HEART: 'heart',
+  CHAT: 'chat',
 };
 
 export type IconName = (typeof ICON_NAMES)[keyof typeof ICON_NAMES];

@@ -1,6 +1,9 @@
 <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
-  <div class="text-xl font-semibold text-gray-800">
-    <p>PAGE NAME</p>
+  <div>
+    <h1 class="text-xl font-bold text-gray-900">{{ layoutStateService.pageTitle() }}</h1>
+    @if (layoutStateService.pageSubtitle()) {
+      <p class="text-xs text-gray-500">{{ layoutStateService.pageSubtitle() }}</p>
+    }
   </div>
 
   <div class="flex items-center gap-4">

@@ -48,6 +48,10 @@ export type TranslationDict = {
       [AuthError.UNKNOWN_ERROR]: string;
     };
   };
+  home: {
+    title: string;
+    subtitle: string;
+  };
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: string;
