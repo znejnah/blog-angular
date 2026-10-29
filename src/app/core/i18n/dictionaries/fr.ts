@@ -19,9 +19,15 @@ export const fr: TranslationDict = {
       close: 'Fermer',
       logout: 'Se déconnecter',
       togglePassword: 'Afficher/masquer le mot de passe',
+      seeMore: 'Voir plus',
+      retry: 'Réessayer',
     },
     states: {
       loading: 'Chargement...',
+      empty: 'Vide',
+    },
+    errors: {
+      default: 'Une erreur inattendue est survenue.',
     },
   },
   auth: {
@@ -66,5 +72,17 @@ export const fr: TranslationDict = {
   navigation: {
     [APP_ROUTES.home.root]: 'Accueil',
     [APP_ROUTES.dashboard.root]: 'Tableau de bord',
+  },
+  feed: {
+    actions: {
+      createArticle: 'Rédiger un nouvel article',
+    },
+    errors: {
+      loadFailed: 'Impossible de charger le flux.',
+    },
+    emptyState: {
+      title: 'Le fil est vide',
+      suggestion: '',
+    },
   },
 };

@@ -1,17 +1,18 @@
+import { User } from './user.model';
+
 export type Article = {
   id: string;
   title: string;
-  excerpt: string;
-  coverImageUrl?: string;
-  author: UserSnippet;
+  description: string;
+  postImageUrl?: string;
+  author: Author;
+  category: Category;
   publishedAt: string;
-  category: string;
-  likesCount: number;
-  commentsCount: number;
 };
 
-export interface UserSnippet {
+type Author = Omit<User, 'email'>;
+
+type Category = {
   id: string;
-  name: string;
-  avatarUrl?: string;
-}
+  title: string;
+};

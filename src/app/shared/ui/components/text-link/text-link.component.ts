@@ -7,6 +7,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './text-link.component.html',
 })
 export class TextLinkComponent {
-  to = input.required<string | any[]>();
-  replaceUrl = input<boolean>(true);
+  readonly to = input.required<string | any[]>();
+  readonly replaceUrl = input<boolean>(true);
 }

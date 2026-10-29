@@ -1,5 +1,4 @@
 import { Component, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 import { RegisterRequestDto } from '../../../core/auth/dto/requests/register-request.dto';
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
@@ -13,13 +12,12 @@ import { TextLinkComponent } from '../../../shared/ui/components/text-link/text-
   templateUrl: './register-page.component.html',
 })
 export class RegisterPageComponent {
-  private readonly router = inject(Router);
-  readonly routes = APP_ROUTES;
+  protected readonly routes = APP_ROUTES;
 
-  readonly i18nService = inject(I18nService);
-  readonly authService = inject(AuthService);
+  protected readonly i18nService = inject(I18nService);
+  protected readonly authService = inject(AuthService);
 
-  readonly translatedApiError = computed(() => {
+  protected readonly translatedApiError = computed(() => {
     const errCode = this.authService.error();
     if (!errCode) return null;
 
@@ -31,7 +29,7 @@ export class RegisterPageComponent {
     this.authService.clearError();
   }
 
-  async onRegisterAttempt(registerDto: RegisterRequestDto): Promise<void> {
+  protected async onRegisterAttempt(registerDto: RegisterRequestDto): Promise<void> {
     await this.authService.register(registerDto);
   }
 }

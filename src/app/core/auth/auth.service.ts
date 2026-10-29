@@ -16,9 +16,9 @@ import { AuthError } from './enums/auth-error.enum';
 
 @Service()
 export class AuthService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
-  readonly baseUrl = inject(API_URL);
+  private readonly baseUrl = inject(API_URL);
 
   private readonly _isLoading = signal<boolean>(false);
   readonly isLoading = this._isLoading.asReadonly();

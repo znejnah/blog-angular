@@ -6,6 +6,6 @@ import { Component, input } from '@angular/core';
   templateUrl: './card.component.html',
 })
 export class CardComponent {
-  title = input<string>();
-  error = input<string | null>(null);
+  readonly title = input<string>();
+  readonly error = input<string | null>(null);
 }

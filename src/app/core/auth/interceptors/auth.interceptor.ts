@@ -9,10 +9,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const isAuthRoute =
     req.url.includes(AUTH_ENDPOINTS.login) || req.url.includes(AUTH_ENDPOINTS.register);
 
+  let authReq = req;
+
   if (token && !isAuthRoute) {
-    const clonedRequest = req.clone({
+    authReq = req.clone({
       setHeaders: { [AUTH_HEADERS.KEY]: `${AUTH_HEADERS.PREFIX} ${token}` },
     });
   }
-  return next(req);
+  return next(authReq);
 };

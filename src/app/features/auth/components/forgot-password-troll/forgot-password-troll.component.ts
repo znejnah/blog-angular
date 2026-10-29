@@ -8,10 +8,11 @@ import { ButtonComponent } from '../../../../shared/ui/components/button/button.
   templateUrl: './forgot-password-troll.component.html',
 })
 export class ForgotPasswordTrollComponent {
-  readonly i18nService = inject(I18nService);
-  readonly isTrolling = signal(false);
+  protected readonly i18nService = inject(I18nService);
 
-  toggleTroll(): void {
+  protected readonly isTrolling = signal(false);
+
+  protected toggleTroll(): void {
     this.isTrolling.set(!this.isTrolling());
   }
 }

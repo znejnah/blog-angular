@@ -19,9 +19,15 @@ export const en: TranslationDict = {
       close: 'Close',
       logout: 'Logout',
       togglePassword: 'Show/hide password',
+      seeMore: 'See more',
+      retry: 'Try again',
     },
     states: {
       loading: 'Loading...',
+      empty: 'Empty',
+    },
+    errors: {
+      default: 'An unexpected error occurred.',
     },
   },
   auth: {
@@ -66,5 +72,17 @@ export const en: TranslationDict = {
   navigation: {
     [APP_ROUTES.home.root]: 'Home',
     [APP_ROUTES.dashboard.root]: 'Dashboard',
+  },
+  feed: {
+    actions: {
+      createArticle: 'Write a new article',
+    },
+    errors: {
+      loadFailed: 'Unable to load the feed.',
+    },
+    emptyState: {
+      title: 'The thread is empty',
+      suggestion: '',
+    },
   },
 };

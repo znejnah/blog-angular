@@ -10,16 +10,16 @@ import { BUTTON_BASE_CLASS, BUTTON_VARIANT_CLASSES } from './button.constant';
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
-  type = input<ButtonType>(BUTTON_TYPES.BUTTON);
-  variant = input<ButtonVariant>(BUTTON_VARIANT.PRIMARY);
-  disabled = input<boolean>(false);
-  isLoading = input<boolean>(false);
-  loadingText = input<string>();
+  readonly type = input<ButtonType>(BUTTON_TYPES.BUTTON);
+  readonly variant = input<ButtonVariant>(BUTTON_VARIANT.PRIMARY);
+  readonly disabled = input<boolean>(false);
+  readonly isLoading = input<boolean>(false);
+  readonly loadingText = input<string>();
 
-  readonly iconNames = ICON_NAMES;
-  readonly isDisabled = computed(() => this.disabled() || this.isLoading());
+  protected readonly iconNames = ICON_NAMES;
+  protected readonly isDisabled = computed(() => this.disabled() || this.isLoading());
 
-  readonly buttonClasses = computed(
+  protected readonly buttonClasses = computed(
     () => `${BUTTON_BASE_CLASS} ${BUTTON_VARIANT_CLASSES[this.variant()]}`,
   );
 }

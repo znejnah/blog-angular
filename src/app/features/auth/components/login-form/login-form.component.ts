@@ -14,18 +14,18 @@ import { FormInputComponent } from '../../../../shared/ui/components/form-input/
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent {
-  texts = input.required<TranslationDict>();
-  isLoading = input<boolean>(false);
-  apiError = input<string | null>(null);
+  readonly texts = input.required<TranslationDict>();
+  readonly isLoading = input<boolean>(false);
+  readonly apiError = input<string | null>(null);
 
-  submitLogin = output<LoginRequestDto>();
+  readonly submitLogin = output<LoginRequestDto>();
 
-  readonly loginModel = signal<LoginRequestDto>({
+  protected readonly loginModel = signal<LoginRequestDto>({
     email: 'admin@example.com',
     password: 'Password123*',
   });
 
-  readonly loginForm = form(this.loginModel, (schemaPath) => {
+  protected readonly loginForm = form(this.loginModel, (schemaPath) => {
     debounce(schemaPath.email, UI_TIMING.FORM_DEBOUNCE);
     required(schemaPath.email);
     pattern(schemaPath.email, REGEX_PATTERNS.EMAIL);
@@ -33,7 +33,7 @@ export class LoginFormComponent {
     required(schemaPath.password);
   });
 
-  onSubmit(): void {
+  protected onSubmit(): void {
     if (this.loginForm().invalid()) return;
     this.submitLogin.emit(this.loginModel());
   }

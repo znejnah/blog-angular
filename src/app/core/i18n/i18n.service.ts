@@ -7,15 +7,15 @@ import { TranslationDict } from './translation.type';
 @Service()
 export class I18nService {
   private readonly _currentLang = signal<LangCode>('fr');
-  readonly currentLang = this._currentLang.asReadonly();
+  protected readonly currentLang = this._currentLang.asReadonly();
 
-  readonly supportedLanguages = SUPPORTED_LANGUAGES;
+  protected readonly supportedLanguages = SUPPORTED_LANGUAGES;
 
   readonly texts = computed<TranslationDict>(() => {
     return this._currentLang() === 'fr' ? fr : en;
   });
 
-  setLanguage(lang: LangCode): void {
+  protected setLanguage(lang: LangCode): void {
     this._currentLang.set(lang);
   }
 }

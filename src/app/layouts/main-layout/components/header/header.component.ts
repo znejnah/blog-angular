@@ -12,25 +12,24 @@ import { ICON_NAMES, IconName } from '../../../../shared/ui/components/icon/icon
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  readonly authService = inject(AuthService);
-  readonly i18nService = inject(I18nService);
-  readonly layoutStateService = inject(LayoutStateService);
+  protected readonly authService = inject(AuthService);
+  protected readonly i18nService = inject(I18nService);
+  protected readonly layoutStateService = inject(LayoutStateService);
 
-  readonly pageTitle = input.required<string>();
+  readonly pageTitle = input<string>();
+  readonly logoutIcon = input<IconName>(ICON_NAMES.LOGOUT);
 
-  readonly userInitials = computed(() => {
+  protected readonly userInitials = computed(() => {
     const user = this.authService.currentUser();
     if (!user) return '?';
 
-    const firstname = user.firstname ? user.firstname[0].toUpperCase() : '';
-    const lastname = user.lastname ? user.lastname[0].toUpperCase() : '';
+    const f = user.firstname ? user.firstname[0].toUpperCase() : '';
+    const l = user.lastname ? user.lastname[0].toUpperCase() : '';
 
-    return firstname + lastname || '?';
+    return f + l || '?';
   });
 
-  readonly logoutIcon = input<IconName>(ICON_NAMES.LOGOUT);
-
-  logout(): void {
+  protected logout(): void {
     this.authService.logout();
   }
 }

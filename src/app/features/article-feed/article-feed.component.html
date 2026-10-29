@@ -1,9 +1,35 @@
 <div class="flex flex-col gap-6">
-  @for (article of articles(); track article.id) {
-    <app-article-card [article]="article"></app-article-card>
-  } @empty {
-    <div class="text-center py-12 text-gray-500">
-      <p>Aucun article publié pour le moment.</p>
+  <app-resource-state
+    [resource]="articlesRessource"
+    [forceEmpty]="displayedArticles().length === 0"
+    [errorMessage]="i18nService.texts().feed.errors.loadFailed"
+  >
+    <div loading>
+      @for (item of skeletonArray; track $index) {
+        <app-article-skeleton />
+      }
     </div>
-  }
+
+    <div empty class="flex flex-col items-center justify-center text-center py-16 gap-4">
+      <h3 class="text-lg font-bold">
+        {{ i18nService.texts().feed.emptyState.title }}
+      </h3>
+      <app-icon-button
+        [icon]="writeIcon()"
+        [ariaLabel]="i18nService.texts().feed.actions.createArticle"
+        (clicked)="writeNewArticle()"
+      ></app-icon-button>
+    </div>
+
+    @for (article of displayedArticles(); track article.id) {
+      <app-article-card [article]="article"></app-article-card>
+    }
+    @if (hasMore()) {
+      <div class="flex justify-center mt-6 mb-8">
+        <app-button variant="secondary" (click)="loadMore()">{{
+          i18nService.texts().common.actions.seeMore
+        }}</app-button>
+      </div>
+    }
+  </app-resource-state>
 </div>

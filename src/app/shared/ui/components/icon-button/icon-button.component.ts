@@ -13,12 +13,11 @@ export class IconButtonComponent {
   readonly icon = input.required<IconName>();
   readonly ariaLabel = input.required<string>();
   readonly type = input<ButtonType>(BUTTON_TYPES.BUTTON);
-
   readonly variant = input<ButtonVariant>(BUTTON_VARIANT.SECONDARY);
 
-  readonly buttonClasses = computed(
+  protected readonly buttonClasses = computed(
     () => `${ICON_BUTTON_BASE_CLASS} ${ICON_BUTTON_VARIANT_CLASSES[this.variant()]}`,
   );
 
-  clicked = output<MouseEvent>();
+  protected clicked = output<MouseEvent>();
 }

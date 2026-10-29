@@ -8,6 +8,7 @@ import { IconName } from './icons.constant';
   host: { class: 'inline-block' },
 })
 export class IconComponent {
-  name = input.required<IconName>();
-  readonly path = computed(() => `url(assets/icons/${this.name()}.svg)`);
+  readonly name = input.required<IconName>();
+
+  protected readonly path = computed(() => `url(assets/icons/${this.name()}.svg)`);
 }

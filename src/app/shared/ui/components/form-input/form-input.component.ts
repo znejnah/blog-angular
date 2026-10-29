@@ -13,34 +13,34 @@ import { FormInputType, INPUT_TYPES } from './form-input.type';
   templateUrl: './form-input.component.html',
 })
 export class FormInputComponent {
-  field = input.required<FieldState<string, string>>();
-  label = input.required<string>();
-  placeholder = input<string>('');
-  type = input<FormInputType>(INPUT_TYPES.TEXT);
-  texts = input.required<TranslationDict>();
+  readonly field = input.required<FieldState<string, string>>();
+  readonly label = input.required<string>();
+  readonly placeholder = input<string>('');
+  readonly type = input<FormInputType>(INPUT_TYPES.TEXT);
+  readonly texts = input.required<TranslationDict>();
 
-  readonly showPassword = signal(false);
+  protected readonly showPassword = signal(false);
 
-  readonly passwordIcon = computed(() =>
+  protected readonly passwordIcon = computed(() =>
     this.showPassword() ? ICON_NAMES.EYE_OFF : ICON_NAMES.EYE,
   );
 
-  readonly isPassword = computed(() => this.type() === INPUT_TYPES.PASSWORD);
+  protected readonly isPassword = computed(() => this.type() === INPUT_TYPES.PASSWORD);
 
-  readonly hasError = computed(() => this.field().touched() && this.field().invalid());
+  protected readonly hasError = computed(() => this.field().touched() && this.field().invalid());
 
-  readonly inputClasses = computed(() =>
+  protected readonly inputClasses = computed(() =>
     this.hasError() ? FORM_STYLES.INPUT_ERROR : FORM_STYLES.INPUT_DEFAULT,
   );
 
-  readonly currentType = computed(() => {
+  protected readonly currentType = computed(() => {
     if (this.type() === INPUT_TYPES.PASSWORD) {
       return this.showPassword() ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD;
     }
     return this.type();
   });
 
-  togglePassword(): void {
+  protected togglePassword(): void {
     this.showPassword.update((state) => !state);
   }
 }

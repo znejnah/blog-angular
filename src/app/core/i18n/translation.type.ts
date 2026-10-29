@@ -8,6 +8,8 @@ export type TranslationDict = {
       close: string;
       logout: string;
       togglePassword: string;
+      seeMore: string;
+      retry: string;
     };
     fields: {
       emailLabel: string;
@@ -21,6 +23,10 @@ export type TranslationDict = {
     };
     states: {
       loading: string;
+      empty: string;
+    };
+    errors: {
+      default: string;
     };
   };
   auth: {
@@ -65,5 +71,17 @@ export type TranslationDict = {
   navigation: {
     [APP_ROUTES.home.root]: string;
     [APP_ROUTES.dashboard.root]: string;
+  };
+  feed: {
+    actions: {
+      createArticle: string;
+    };
+    errors: {
+      loadFailed: string;
+    };
+    emptyState: {
+      title: string;
+      suggestion: string;
+    };
   };
 };

@@ -12,10 +12,10 @@ import { SCORE_COLORS } from './password-strength-meter.constant';
   templateUrl: './password-strength-meter.component.html',
 })
 export class PasswordStrengthMeterComponent {
-  texts = input.required<TranslationDict>();
-  password = input.required<string>();
+  readonly texts = input.required<TranslationDict>();
+  readonly password = input.required<string>();
 
-  readonly criteria = computed(() => {
+  protected readonly criteria = computed(() => {
     const pwd = this.password();
     const criteriaTexts = this.texts().auth.register.passwordCriteria;
     return [
@@ -27,13 +27,13 @@ export class PasswordStrengthMeterComponent {
     ];
   });
 
-  readonly score = computed(() => this.criteria().filter((c) => c.met).length);
+  protected readonly score = computed(() => this.criteria().filter((c) => c.met).length);
 
-  readonly barColor = computed(() => SCORE_COLORS[this.score()] ?? SCORE_COLORS[0]);
+  protected readonly barColor = computed(() => SCORE_COLORS[this.score()] ?? SCORE_COLORS[0]);
 
-  readonly scoreBars = computed(() =>
+  protected readonly scoreBars = computed(() =>
     Array.from({ length: this.criteria().length }, (_, i) => ++i),
   );
 
-  readonly iconNames = ICON_NAMES;
+  protected readonly iconNames = ICON_NAMES;
 }

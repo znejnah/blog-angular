@@ -7,5 +7,5 @@ import { I18nService } from '../../../../core/i18n/i18n.service';
   templateUrl: './lang-switcher.component.html',
 })
 export class LangSwitcherComponent {
-  readonly i18nService = inject(I18nService);
+  protected readonly i18nService = inject(I18nService);
 }

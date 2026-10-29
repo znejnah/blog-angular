@@ -1,10 +1,10 @@
 import { Component, input, output, signal } from '@angular/core';
 import { form, minLength, pattern, required, validate } from '@angular/forms/signals';
 import { RegisterRequestDto } from '../../../../core/auth/dto/requests/register-request.dto';
+import { TranslationDict } from '../../../../core/i18n/translation.type';
 import { REGEX_PATTERNS } from '../../../../shared/constants/regex.constant';
 import { VALIDATION_ERRORS } from '../../../../shared/constants/validation-errors.constant';
 import { VALIDATION_RULES } from '../../../../shared/constants/validation-rules.constant';
-import { TranslationDict } from '../../../../core/i18n/translation.type';
 import { ButtonComponent } from '../../../../shared/ui/components/button/button.component';
 import { CardComponent } from '../../../../shared/ui/components/card/card.component';
 import { FormInputComponent } from '../../../../shared/ui/components/form-input/form-input.component';
@@ -20,15 +20,15 @@ type RegisterFormModel = RegisterRequestDto & {
   templateUrl: './register-form.component.html',
 })
 export class RegisterFormComponent {
-  texts = input.required<TranslationDict>();
-  isLoading = input<boolean>(false);
-  apiError = input<string | null>(null);
+  readonly texts = input.required<TranslationDict>();
+  readonly isLoading = input<boolean>(false);
+  readonly apiError = input<string | null>(null);
 
-  submitRegister = output<RegisterRequestDto>();
+  readonly submitRegister = output<RegisterRequestDto>();
 
   // CHANGE SIGNAL TYPE TO RegisterRequestDto IF/WHEN CLIENT CHANGE HIS MIND ABOUT CONFIRM PASSWORD
   // AND GET RID OF confirmPassword ATTR
-  readonly registerModel = signal<RegisterFormModel>({
+  protected readonly registerModel = signal<RegisterFormModel>({
     email: '',
     firstname: '',
     lastname: '',
@@ -36,7 +36,7 @@ export class RegisterFormComponent {
     confirmPassword: '',
   });
 
-  readonly registerForm = form(this.registerModel, (schemaPath) => {
+  protected readonly registerForm = form(this.registerModel, (schemaPath) => {
     required(schemaPath.email);
     pattern(schemaPath.email, REGEX_PATTERNS.EMAIL);
 
@@ -59,7 +59,7 @@ export class RegisterFormComponent {
     // END OF BLOC
   });
 
-  onSubmit(): void {
+  protected onSubmit(): void {
     if (this.registerForm().invalid()) return;
 
     this.submitRegister.emit(this.registerModel());
