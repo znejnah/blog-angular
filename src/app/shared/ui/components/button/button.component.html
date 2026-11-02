@@ -1,0 +1,10 @@
+<button [type]="type()" [disabled]="isDisabled()" [class]="buttonClasses()">
+  @if (isLoading()) {
+    <span class="flex items-center gap-2">
+      <app-icon [name]="iconNames.SPINNER" class="animate-spin h-5 w-5 fill-current"></app-icon>
+      {{ loadingText() }}
+    </span>
+  } @else {
+    <ng-content></ng-content>
+  }
+</button>

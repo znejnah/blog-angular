@@ -1,12 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 import { LoginRequestDto } from '../../../core/auth/dto/requests/login-request.dto';
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
 import { ForgotPasswordTrollComponent } from '../../../features/auth/components/forgot-password-troll/forgot-password-troll.component';
 import { LoginFormComponent } from '../../../features/auth/components/login-form/login-form.component';
-import { TextLinkComponent } from '../../../shared/components/text-link/text-link.component';
+import { TextLinkComponent } from '../../../shared/ui/components/text-link/text-link.component';
 
 @Component({
   imports: [LoginFormComponent, ForgotPasswordTrollComponent, TextLinkComponent],
@@ -14,13 +13,12 @@ import { TextLinkComponent } from '../../../shared/components/text-link/text-lin
   templateUrl: './login-page.component.html',
 })
 export class LoginPageComponent {
-  private readonly router = inject(Router);
-  readonly routes = APP_ROUTES;
+  protected readonly routes = APP_ROUTES;
 
-  readonly i18nService = inject(I18nService);
-  readonly authService = inject(AuthService);
+  protected readonly i18nService = inject(I18nService);
+  protected readonly authService = inject(AuthService);
 
-  readonly translatedApiError = computed(() => {
+  protected readonly translatedApiError = computed(() => {
     const errCode = this.authService.error();
     if (!errCode) return null;
 
@@ -28,7 +26,7 @@ export class LoginPageComponent {
     return dict[errCode as keyof typeof dict] ?? dict['UNKNOWN_ERROR'];
   });
 
-  readonly isTrolling = signal(false);
+  protected readonly isTrolling = signal(false);
 
   constructor() {
     this.authService.clearError();
@@ -36,25 +34,9 @@ export class LoginPageComponent {
 
   triggerTroll(): void {
     this.isTrolling.set(true);
-
-    // setTimeout(() => {
-    //   this.isTrolling.set(false);
-    // }, 3000);
   }
 
-  async onLoginAttempt(loginDto: LoginRequestDto): Promise<void> {
-    const success = await this.authService.login(loginDto);
-
-    console.log('Success :', success);
-
-    if (success) {
-      console.log('LOGIN => DASHBOARD');
-      // TECH DEBT : IMPLEMENT ROUTING WHEN PAGE EXIST
-      this.router.navigate(['/', this.routes.dashboard.root], { replaceUrl: true });
-    }
-  }
-
-  onRegisterLinkSubmit(): void {
-    this.router.navigate(['/', this.routes.auth.register], { replaceUrl: true });
+  protected async onLoginAttempt(loginDto: LoginRequestDto): Promise<void> {
+    await this.authService.login(loginDto);
   }
 }

@@ -6,6 +6,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 export const routes: Routes = [
   {
@@ -24,8 +26,9 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     canActivate: [authGuard],
     children: [
-      { path: APP_ROUTES.dashboard.root, component: MainLayoutComponent },
-      { path: '', redirectTo: APP_ROUTES.dashboard.root, pathMatch: 'full' },
+      { path: APP_ROUTES.home.root, component: HomePageComponent },
+      { path: APP_ROUTES.dashboard.root, component: DashboardPageComponent },
+      { path: '', redirectTo: APP_ROUTES.home.root, pathMatch: 'full' },
     ],
   },
   {

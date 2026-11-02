@@ -1,0 +1,9 @@
+<button
+  [type]="type()"
+  (click)="clicked.emit($event)"
+  [title]="ariaLabel()"
+  [attr.aria-label]="ariaLabel()"
+  [class]="buttonClasses()"
+>
+  <app-icon [name]="icon()" class="w-5 h-5"></app-icon>
+</button>

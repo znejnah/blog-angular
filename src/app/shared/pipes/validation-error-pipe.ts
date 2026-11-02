@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ValidationError } from '@angular/forms/signals';
-import { TranslationDict } from '../i18n/translation.type';
+import { TranslationDict } from '../../core/i18n/translation.type';
 
 @Pipe({
   name: 'validationError',

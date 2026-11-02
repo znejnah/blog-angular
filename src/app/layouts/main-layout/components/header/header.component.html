@@ -1,0 +1,28 @@
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+  <div>
+    <h1 class="text-xl font-bold text-gray-900">{{ layoutStateService.pageTitle() }}</h1>
+    @if (layoutStateService.pageSubtitle()) {
+      <p class="text-xs text-gray-500">{{ layoutStateService.pageSubtitle() }}</p>
+    }
+  </div>
+
+  <div class="flex items-center gap-4">
+    <span class="text-sm text-gray-600"> {{ authService.currentUser()?.email }} </span>
+
+    <div
+      class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold"
+    >
+      {{ userInitials() }}
+    </div>
+
+    <app-lang-switcher />
+
+    <app-icon-button
+      [icon]="logoutIcon()"
+      variant="danger"
+      [ariaLabel]="i18nService.texts().common.actions.logout"
+      (clicked)="logout()"
+      class="ml-4"
+    ></app-icon-button>
+  </div>
+</header>

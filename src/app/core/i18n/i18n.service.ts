@@ -1,8 +1,8 @@
 import { computed, Service, signal } from '@angular/core';
-import { en } from '../../shared/i18n/en';
-import { fr } from '../../shared/i18n/fr';
-import { TranslationDict } from '../../shared/i18n/translation.type';
 import { LangCode, SUPPORTED_LANGUAGES } from './config/i18n.config';
+import { en } from './dictionaries/en';
+import { fr } from './dictionaries/fr';
+import { TranslationDict } from './translation.type';
 
 @Service()
 export class I18nService {

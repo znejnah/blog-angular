@@ -57,10 +57,10 @@
       type="submit"
       [disabled]="registerForm().invalid()"
       [isLoading]="isLoading()"
-      [texts]="texts()"
+      [loadingText]="texts().common.states.loading"
     >
       {{ texts().auth.register.submitBtn }}
     </app-button>
   </form>
-  <ng-content></ng-content>
+  <ng-content />
 </app-card>

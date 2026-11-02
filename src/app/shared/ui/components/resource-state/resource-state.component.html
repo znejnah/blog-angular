@@ -1,0 +1,16 @@
+@if (resource().error()) {
+  <div class="bg-red-50 p-6 rounded-xl border border-red-100 text-center">
+    <p class="text-red-700 font-medium mb-4">
+      {{ errorMessage() || i18nService.texts().common.errors.default }}
+    </p>
+    <app-button variant="secondary" (click)="resource().reload()">
+      {{ i18nService.texts().common.actions.retry }}
+    </app-button>
+  </div>
+} @else if (resource().isLoading() && !resource().value()) {
+  <ng-content select="[loading]"></ng-content>
+} @else if (isActuallyEmpty()) {
+  <ng-content select="[empty]"></ng-content>
+} @else {
+  <ng-content></ng-content>
+}
