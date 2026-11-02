@@ -49,6 +49,7 @@ export type TranslationDict = {
         specialChar: string;
       };
     };
+    welcomeMessage: (name: string) => string;
     apiErrors: {
       [AuthError.INVALID_CREDENTIALS]: string;
       [AuthError.UNKNOWN_ERROR]: string;

@@ -54,6 +54,7 @@ export const en: TranslationDict = {
         specialChar: '1 special character',
       },
     },
+    welcomeMessage: (name: string) => `Welcome, ${name}!`,
   },
   home: {
     title: 'News',

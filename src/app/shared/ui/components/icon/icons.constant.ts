@@ -10,6 +10,10 @@ export const ICON_NAMES = {
   HEART: 'heart',
   CHAT: 'chat',
   WRITE: 'write',
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
 };
 
 export type IconName = (typeof ICON_NAMES)[keyof typeof ICON_NAMES];

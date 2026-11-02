@@ -1,7 +1,7 @@
 import { Component, effect, inject } from '@angular/core';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { LayoutStateService } from '../../core/layout/layout-state.service';
-import { ArticleFeedComponent } from '../../features/article-feed/article-feed.component';
+import { ArticleFeedComponent } from '../../features/articles/feed/article-feed.component';
 
 @Component({
   imports: [ArticleFeedComponent],
