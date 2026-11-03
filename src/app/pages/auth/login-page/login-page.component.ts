@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { AuthService } from '../../../core/auth/auth.service';
+import { Router } from '@angular/router';
+import { AuthStore } from '../../../core/auth/auth.store';
 import { LoginRequestDto } from '../../../core/auth/dto/requests/login-request.dto';
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
@@ -17,11 +18,12 @@ export class LoginPageComponent {
   protected readonly routes = APP_ROUTES;
 
   protected readonly i18nService = inject(I18nService);
-  protected readonly authService = inject(AuthService);
+  protected readonly authStore = inject(AuthStore);
   private readonly toastService = inject(ToastService);
+  private readonly router = inject(Router);
 
   protected readonly translatedApiError = computed(() => {
-    const errCode = this.authService.error();
+    const errCode = this.authStore.error();
     if (!errCode) return null;
 
     const dict = this.i18nService.texts().auth.apiErrors;
@@ -31,18 +33,21 @@ export class LoginPageComponent {
   protected readonly isTrolling = signal(false);
 
   constructor() {
-    this.authService.clearError();
+    this.authStore.clearError();
   }
 
   triggerTroll(): void {
     this.isTrolling.set(true);
   }
 
-  protected async onLoginAttempt(loginDto: LoginRequestDto): Promise<void> {
-    await this.authService.login(loginDto);
-    const user = this.authService.currentUser();
-    if (user?.firstname) {
-      this.toastService.info(this.i18nService.texts().auth.welcomeMessage(user.firstname));
-    }
+  protected async onLoginSubmit(loginDto: LoginRequestDto): Promise<void> {
+    try {
+      await this.authStore.login(loginDto);
+      const user = this.authStore.currentUser();
+      if (user?.firstname) {
+        this.toastService.info(this.i18nService.texts().auth.welcomeMessage(user.firstname));
+      }
+      await this.router.navigate(['/', APP_ROUTES.ARTICLES.ROOT], { replaceUrl: true });
+    } catch (e) {}
   }
 }

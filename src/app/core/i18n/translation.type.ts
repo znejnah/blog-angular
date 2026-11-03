@@ -70,8 +70,8 @@ export type TranslationDict = {
     };
   };
   navigation: {
-    [APP_ROUTES.home.root]: string;
-    [APP_ROUTES.dashboard.root]: string;
+    [APP_ROUTES.ARTICLES.ROOT]: string;
+    [APP_ROUTES.ARTICLES.CREATE]: string;
   };
   feed: {
     actions: {

@@ -71,8 +71,8 @@ export const en: TranslationDict = {
     },
   },
   navigation: {
-    [APP_ROUTES.home.root]: 'Home',
-    [APP_ROUTES.dashboard.root]: 'Dashboard',
+    [APP_ROUTES.ARTICLES.ROOT]: 'Articles feed',
+    [APP_ROUTES.ARTICLES.CREATE]: 'New article',
   },
   feed: {
     actions: {

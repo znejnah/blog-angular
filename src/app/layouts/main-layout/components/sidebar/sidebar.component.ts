@@ -15,15 +15,15 @@ export class SidebarComponent {
 
   readonly menuItems = computed(() => [
     {
-      route: ['/', APP_ROUTES.home.root],
+      route: ['/', APP_ROUTES.ARTICLES.ROOT],
       icon: ICON_NAMES.HOME,
-      label: this.i18nService.texts().navigation[APP_ROUTES.home.root],
+      label: this.i18nService.texts().navigation[APP_ROUTES.ARTICLES.ROOT],
       exact: true,
     },
     {
-      route: ['/', APP_ROUTES.dashboard.root],
-      icon: ICON_NAMES.DASHBOARD,
-      label: this.i18nService.texts().navigation[APP_ROUTES.dashboard.root],
+      route: ['/', APP_ROUTES.ARTICLES.CREATE],
+      icon: ICON_NAMES.WRITE,
+      label: this.i18nService.texts().navigation[APP_ROUTES.ARTICLES.CREATE],
       exact: true,
     },
   ]);

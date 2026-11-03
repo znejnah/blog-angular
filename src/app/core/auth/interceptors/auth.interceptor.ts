@@ -7,7 +7,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem(STORAGE_KEYS.accessToken);
 
   const isAuthRoute =
-    req.url.includes(AUTH_ENDPOINTS.login) || req.url.includes(AUTH_ENDPOINTS.register);
+    req.url.includes(AUTH_ENDPOINTS.LOGIN) || req.url.includes(AUTH_ENDPOINTS.REGISTER);
 
   let authReq = req;
 

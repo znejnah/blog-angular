@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
-import { AuthService } from '../../../core/auth/auth.service';
+import { Router } from '@angular/router';
+import { AuthStore } from '../../../core/auth/auth.store';
 import { RegisterRequestDto } from '../../../core/auth/dto/requests/register-request.dto';
 import { APP_ROUTES } from '../../../core/constants/app-routes.constant';
 import { I18nService } from '../../../core/i18n/i18n.service';
@@ -16,11 +17,12 @@ export class RegisterPageComponent {
   protected readonly routes = APP_ROUTES;
 
   protected readonly i18nService = inject(I18nService);
-  protected readonly authService = inject(AuthService);
+  protected readonly authStore = inject(AuthStore);
   private readonly toastService = inject(ToastService);
+  private readonly router = inject(Router);
 
   protected readonly translatedApiError = computed(() => {
-    const errCode = this.authService.error();
+    const errCode = this.authStore.error();
     if (!errCode) return null;
 
     const dict = this.i18nService.texts().auth.apiErrors;
@@ -28,14 +30,17 @@ export class RegisterPageComponent {
   });
 
   constructor() {
-    this.authService.clearError();
+    this.authStore.clearError();
   }
 
-  protected async onRegisterAttempt(registerDto: RegisterRequestDto): Promise<void> {
-    await this.authService.register(registerDto);
-    const user = this.authService.currentUser();
-    if (user?.firstname) {
-      this.toastService.info(this.i18nService.texts().auth.welcomeMessage(user.firstname));
-    }
+  protected async onRegisterSubmit(registerDto: RegisterRequestDto): Promise<void> {
+    try {
+      await this.authStore.login(registerDto);
+      const user = this.authStore.currentUser();
+      if (user?.firstname) {
+        this.toastService.info(this.i18nService.texts().auth.welcomeMessage(user.firstname));
+      }
+      await this.router.navigate(['/', APP_ROUTES.ARTICLES.ROOT], { replaceUrl: true });
+    } catch (e) {}
   }
 }

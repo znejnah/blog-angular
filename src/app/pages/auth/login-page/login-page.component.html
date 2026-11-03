@@ -1,15 +1,15 @@
 <app-login-form
   [texts]="i18nService.texts()"
-  [isLoading]="authService.isLoading()"
+  [isLoading]="authStore.isLoading()"
   [apiError]="translatedApiError()"
-  (submitLogin)="onLoginAttempt($event)"
+  (submitLogin)="onLoginSubmit($event)"
   class="w-full"
 >
   <div class="mt-6 text-center text-sm text-gray-600">
     <app-forgot-password-troll />
   </div>
   <div class="mt-6 text-center text-sm text-gray-600">
-    <app-text-link [to]="['/', routes.auth.root, routes.auth.register]"
+    <app-text-link [to]="['/', routes.AUTH.ROOT, routes.AUTH.REGISTER]"
       >{{ i18nService.texts().auth.login.noAccountLink }}
     </app-text-link>
   </div>
