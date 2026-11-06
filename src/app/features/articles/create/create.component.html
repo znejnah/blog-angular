@@ -1,0 +1,71 @@
+<div class="flex flex-col h-full max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+  <form (submit)="$event.preventDefault(); onSubmit()" class="flex-1 flex flex-col mt-8">
+    <div class="flex-1 space-y-8">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <app-form-input
+          [field]="createForm.title()"
+          [texts]="texts()"
+          [label]="texts().articles.create.fields.titleLabel"
+          [isRequired]="true"
+          [placeholder]="texts().articles.create.fields.titlePlaceholder"
+        >
+        </app-form-input>
+
+        <app-form-select
+          [field]="createForm.categoryId"
+          [texts]="texts()"
+          [label]="texts().articles.create.fields.categoryLabel"
+          [isRequired]="true"
+        >
+          <option value="" disabled selected>
+            {{ texts().articles.create.fields.categoryPlaceholder }}
+          </option>
+
+          @if (categoryStore.categoriesList.error()) {
+            <option value="" disabled>❌ {{ texts().articles.create.errors.categoryError }}</option>
+          } @else if (categoryStore.categoriesList.isLoading()) {
+            <option value="" disabled>⏳ {{ texts().common.states.loading }}</option>
+          } @else {
+            @for (cat of categoryStore.categoriesList.value(); track cat.id) {
+              <option [value]="cat.id">{{ cat.title }}</option>
+            }
+          }
+        </app-form-select>
+      </div>
+
+      <app-form-file
+        [field]="createForm.postImage"
+        [texts]="texts()"
+        [label]="texts().articles.create.fields.imageLabel"
+        [isRequired]="true"
+        [accept]="FILE_FORMATS.STRICT_IMAGES"
+        (fileSelected)="onFileSelected($event)"
+      >
+      </app-form-file>
+
+      <app-form-input
+        type="textarea"
+        [field]="createForm.description()"
+        [texts]="texts()"
+        [label]="texts().articles.create.fields.descriptionLabel"
+        [isRequired]="true"
+        [placeholder]="texts().articles.create.fields.descriptionPlaceholder"
+      >
+      </app-form-input>
+    </div>
+
+    <div class="mt-auto pt-6 pb-2 border-t border-gray-200 flex items-center justify-end gap-x-6">
+      <app-text-link [to]="['/', APP_ROUTES.ARTICLES.ROOT]">
+        {{ texts().common.actions.cancel }}
+      </app-text-link>
+      <app-button
+        type="submit"
+        [disabled]="createForm().invalid()"
+        [isLoading]="articleStore.isCreating()"
+        [loadingText]="texts().common.states.loading"
+      >
+        {{ texts().articles.create.submitBtn }}
+      </app-button>
+    </div>
+  </form>
+</div>

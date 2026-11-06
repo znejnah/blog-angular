@@ -35,7 +35,7 @@ export class RegisterPageComponent {
 
   protected async onRegisterSubmit(registerDto: RegisterRequestDto): Promise<void> {
     try {
-      await this.authStore.login(registerDto);
+      await this.authStore.register(registerDto);
       const user = this.authStore.currentUser();
       if (user?.firstname) {
         this.toastService.info(this.i18nService.texts().auth.welcomeMessage(user.firstname));

@@ -1,4 +1,4 @@
-import { ButtonVariant } from '../../types/button.type';
+import { ButtonVariant } from '../button/button.type';
 
 export const ICON_BUTTON_BASE_CLASS =
   'flex items-center justify-center p-2 rounded-full transition-colors focus:outline-none focus:ring-2 disabled:opacity-50 cursor-pointer';

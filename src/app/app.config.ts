@@ -1,3 +1,4 @@
+import { IMAGE_CONFIG } from '@angular/common';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -12,5 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor])),
     { provide: API_URL, useValue: environment.apiUrl },
+    { provide: IMAGE_CONFIG, useValue: { disableImageSizeWarning: true } },
   ],
 };

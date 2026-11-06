@@ -10,16 +10,7 @@ export type TranslationDict = {
       togglePassword: string;
       seeMore: string;
       retry: string;
-    };
-    fields: {
-      emailLabel: string;
-      emailPlaceholder: string;
-      passwordLabel: string;
-      firstnameLabel: string;
-      firstnamePlaceholder: string;
-      lastnameLabel: string;
-      lastnamePlaceholder: string;
-      confirmPasswordLabel: string;
+      cancel: string;
     };
     states: {
       loading: string;
@@ -27,9 +18,25 @@ export type TranslationDict = {
     };
     errors: {
       default: string;
+      network: string;
+      timeout: string;
+    };
+  };
+  users: {
+    fields: {
+      emailLabel: string;
+      emailPlaceholder: string;
+      firstnameLabel: string;
+      firstnamePlaceholder: string;
+      lastnameLabel: string;
+      lastnamePlaceholder: string;
     };
   };
   auth: {
+    fields: {
+      passwordLabel: string;
+      confirmPasswordLabel: string;
+    };
     login: {
       title: string;
       submitBtn: string;
@@ -55,9 +62,38 @@ export type TranslationDict = {
       [AuthError.UNKNOWN_ERROR]: string;
     };
   };
-  home: {
-    title: string;
-    subtitle: string;
+  articles: {
+    feed: {
+      title: string;
+      subtitle: string;
+      actions: {
+        createArticle: string;
+      };
+      errors: {
+        loadFailed: string;
+      };
+      emptyState: {
+        title: string;
+        suggestion: string;
+      };
+    };
+    create: {
+      title: string;
+      subtitle: string;
+      submitBtn: string;
+      fields: {
+        titleLabel: string;
+        titlePlaceholder: string;
+        categoryLabel: string;
+        categoryPlaceholder: string;
+        imageLabel: string;
+        descriptionLabel: string;
+        descriptionPlaceholder: string;
+      };
+      errors: {
+        categoryError: string;
+      };
+    };
   };
   validation: {
     messages: {
@@ -72,17 +108,5 @@ export type TranslationDict = {
   navigation: {
     [APP_ROUTES.ARTICLES.ROOT]: string;
     [APP_ROUTES.ARTICLES.CREATE]: string;
-  };
-  feed: {
-    actions: {
-      createArticle: string;
-    };
-    errors: {
-      loadFailed: string;
-    };
-    emptyState: {
-      title: string;
-      suggestion: string;
-    };
   };
 };

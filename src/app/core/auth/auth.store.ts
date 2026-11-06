@@ -41,10 +41,26 @@ export class AuthStore {
   }
 
   async register(registerDto: RegisterRequestDto): Promise<User> {
-    return this.executeAuthRequest(
-      this.api.register(registerDto),
-      (status) => REGISTER_ERROR_MAP[status] ?? AuthError.UNKNOWN_ERROR,
-    );
+    this._isLoading.set(true);
+    this.clearError();
+
+    try {
+      await firstValueFrom(this.api.register(registerDto));
+
+      return await this.login({
+        email: registerDto.email,
+        password: registerDto.password,
+      });
+    } catch (error: unknown) {
+      if (error instanceof HttpErrorResponse) {
+        this._error.set(REGISTER_ERROR_MAP[error.status] ?? AuthError.UNKNOWN_ERROR);
+      } else {
+        this._error.set(AuthError.UNKNOWN_ERROR);
+      }
+      throw error;
+    } finally {
+      this._isLoading.set(false);
+    }
   }
 
   logout(): void {
