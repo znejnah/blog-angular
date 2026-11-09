@@ -5,22 +5,14 @@ import { TranslationDict } from '../translation.type';
 
 export const en: TranslationDict = {
   common: {
-    fields: {
-      emailLabel: 'Email address',
-      emailPlaceholder: 'john@example.com',
-      passwordLabel: 'Password',
-      firstnameLabel: 'Firstname',
-      firstnamePlaceholder: 'John',
-      lastnameLabel: 'Lastname',
-      lastnamePlaceholder: 'Doe',
-      confirmPasswordLabel: 'Confirm password',
-    },
+    siteLogo: 'My Site Logo',
     actions: {
       close: 'Close',
       logout: 'Logout',
       togglePassword: 'Show/hide password',
       seeMore: 'See more',
       retry: 'Try again',
+      cancel: 'Cancel',
     },
     states: {
       loading: 'Loading...',
@@ -28,9 +20,25 @@ export const en: TranslationDict = {
     },
     errors: {
       default: 'An unexpected error occurred.',
+      network: 'Connection to the server lost. Check your internet.',
+      timeout: 'The server is taking too long to respond.',
+    },
+  },
+  users: {
+    fields: {
+      emailLabel: 'Email address',
+      emailPlaceholder: 'john@example.com',
+      firstnameLabel: 'Firstname',
+      firstnamePlaceholder: 'John',
+      lastnameLabel: 'Lastname',
+      lastnamePlaceholder: 'Doe',
     },
   },
   auth: {
+    fields: {
+      passwordLabel: 'Password',
+      confirmPasswordLabel: 'Confirm password',
+    },
     login: {
       title: 'Sign In',
       submitBtn: 'Log in',
@@ -54,10 +62,40 @@ export const en: TranslationDict = {
         specialChar: '1 special character',
       },
     },
+    welcomeMessage: (name: string) => `Welcome, ${name}!`,
   },
-  home: {
-    title: 'News',
-    subtitle: 'Discover latest news.',
+  articles: {
+    feed: {
+      title: 'News',
+      subtitle: 'Discover latest news.',
+      actions: {
+        createArticle: 'Write a new article',
+      },
+      errors: {
+        loadFailed: 'Unable to load the feed.',
+      },
+      emptyState: {
+        title: 'The thread is empty',
+        suggestion: '',
+      },
+    },
+    create: {
+      title: 'Write an article',
+      subtitle: 'Share your ideas and knowledge with the community.',
+      submitBtn: 'Publish article',
+      fields: {
+        titleLabel: 'Article title',
+        titlePlaceholder: 'Ex: Angular v22 Architecture...',
+        categoryLabel: 'Category',
+        categoryPlaceholder: 'Select a category',
+        imageLabel: 'Cover image',
+        descriptionLabel: 'Description',
+        descriptionPlaceholder: 'Description or content of your article...',
+      },
+      errors: {
+        categoryError: 'Failed to load categories',
+      },
+    },
   },
   validation: {
     messages: {
@@ -70,19 +108,7 @@ export const en: TranslationDict = {
     },
   },
   navigation: {
-    [APP_ROUTES.home.root]: 'Home',
-    [APP_ROUTES.dashboard.root]: 'Dashboard',
-  },
-  feed: {
-    actions: {
-      createArticle: 'Write a new article',
-    },
-    errors: {
-      loadFailed: 'Unable to load the feed.',
-    },
-    emptyState: {
-      title: 'The thread is empty',
-      suggestion: '',
-    },
+    [APP_ROUTES.ARTICLES.ROOT]: 'Articles feed',
+    [APP_ROUTES.ARTICLES.CREATE]: 'New article',
   },
 };

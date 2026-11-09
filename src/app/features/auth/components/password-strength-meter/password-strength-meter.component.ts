@@ -19,7 +19,10 @@ export class PasswordStrengthMeterComponent {
     const pwd = this.password();
     const criteriaTexts = this.texts().auth.register.passwordCriteria;
     return [
-      { label: criteriaTexts.minChars, met: pwd.length >= VALIDATION_RULES.PASSWORD_MIN_LENGTH },
+      {
+        label: criteriaTexts.minChars,
+        met: pwd.length >= VALIDATION_RULES.AUTH.PASSWORD_MIN_LENGTH,
+      },
       { label: criteriaTexts.lowercase, met: REGEX_PATTERNS.LOWERCASE.test(pwd) },
       { label: criteriaTexts.uppercase, met: REGEX_PATTERNS.UPPERCASE.test(pwd) },
       { label: criteriaTexts.number, met: REGEX_PATTERNS.DIGIT.test(pwd) },

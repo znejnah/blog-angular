@@ -1,4 +1,4 @@
-import { Article } from '../models/article.model';
+import { Article } from '../articles/models/article.model';
 
 const AUTHORS = {
   alice: { id: 'u1', firstname: 'Alice', lastname: 'Dupont' },

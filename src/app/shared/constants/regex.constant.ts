@@ -5,4 +5,5 @@ export const REGEX_PATTERNS = {
   UPPERCASE: /[A-Z]/,
   DIGIT: /[0-9]/,
   SPECIAL_CHARACTER: /[^A-Za-z0-9]/,
+  NOT_EMPTY: /\S/,
 };

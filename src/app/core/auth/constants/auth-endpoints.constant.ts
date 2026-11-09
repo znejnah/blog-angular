@@ -1,4 +1,4 @@
 export const AUTH_ENDPOINTS = {
-  login: '/auth/login',
-  register: '/auth/register',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/signup',
 };

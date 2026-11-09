@@ -1,4 +1,4 @@
-import { ButtonVariant } from '../../types/button.type';
+import { ButtonVariant } from './button.type';
 
 export const BUTTON_BASE_CLASS =
   'w-full flex justify-center items-center py-2 px-4 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';

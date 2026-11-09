@@ -4,16 +4,18 @@
       <app-form-input
         [field]="registerForm.firstname()"
         [texts]="texts()"
-        [label]="texts().common.fields.firstnameLabel"
-        [placeholder]="texts().common.fields.firstnamePlaceholder"
+        [label]="texts().users.fields.firstnameLabel"
+        [isRequired]="true"
+        [placeholder]="texts().users.fields.firstnamePlaceholder"
       >
       </app-form-input>
 
       <app-form-input
         [field]="registerForm.lastname()"
         [texts]="texts()"
-        [label]="texts().common.fields.lastnameLabel"
-        [placeholder]="texts().common.fields.lastnamePlaceholder"
+        [label]="texts().users.fields.lastnameLabel"
+        [isRequired]="true"
+        [placeholder]="texts().users.fields.lastnamePlaceholder"
       >
       </app-form-input>
     </div>
@@ -22,8 +24,9 @@
       type="email"
       [field]="registerForm.email()"
       [texts]="texts()"
-      [label]="texts().common.fields.emailLabel"
-      [placeholder]="texts().common.fields.emailPlaceholder"
+      [label]="texts().users.fields.emailLabel"
+      [isRequired]="true"
+      [placeholder]="texts().users.fields.emailPlaceholder"
     >
     </app-form-input>
 
@@ -32,7 +35,8 @@
         type="password"
         [field]="registerForm.password()"
         [texts]="texts()"
-        [label]="texts().common.fields.passwordLabel"
+        [label]="texts().auth.fields.passwordLabel"
+        [isRequired]="true"
         placeholder="••••••••"
       >
       </app-form-input>
@@ -47,7 +51,8 @@
       type="password"
       [field]="registerForm.confirmPassword()"
       [texts]="texts()"
-      [label]="texts().common.fields.confirmPasswordLabel"
+      [label]="texts().auth.fields.confirmPasswordLabel"
+      [isRequired]="true"
       placeholder="••••••••"
     >
     </app-form-input>

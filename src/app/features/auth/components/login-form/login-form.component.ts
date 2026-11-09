@@ -21,8 +21,8 @@ export class LoginFormComponent {
   readonly submitLogin = output<LoginRequestDto>();
 
   protected readonly loginModel = signal<LoginRequestDto>({
-    email: 'admin@example.com',
-    password: 'Password123*',
+    email: 'bmarley@raggae.com',
+    password: 'P@ssword1',
   });
 
   protected readonly loginForm = form(this.loginModel, (schemaPath) => {

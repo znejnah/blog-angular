@@ -5,22 +5,14 @@ import { TranslationDict } from '../translation.type';
 
 export const fr: TranslationDict = {
   common: {
-    fields: {
-      emailLabel: 'Adresse email',
-      emailPlaceholder: 'jean@exemple.com',
-      passwordLabel: 'Mot de passe',
-      firstnameLabel: 'Prénom',
-      firstnamePlaceholder: 'Jean',
-      lastnameLabel: 'Nom',
-      lastnamePlaceholder: 'Dupont',
-      confirmPasswordLabel: 'Confirmation mot de passe',
-    },
+    siteLogo: 'Logo de Mon Site',
     actions: {
       close: 'Fermer',
       logout: 'Se déconnecter',
       togglePassword: 'Afficher/masquer le mot de passe',
       seeMore: 'Voir plus',
       retry: 'Réessayer',
+      cancel: 'Annuler',
     },
     states: {
       loading: 'Chargement...',
@@ -28,9 +20,25 @@ export const fr: TranslationDict = {
     },
     errors: {
       default: 'Une erreur inattendue est survenue.',
+      network: 'Connexion au serveur perdue. Vérifiez votre internet.',
+      timeout: 'Le serveur met trop de temps à répondre.',
+    },
+  },
+  users: {
+    fields: {
+      emailLabel: 'Adresse email',
+      emailPlaceholder: 'jean@exemple.com',
+      firstnameLabel: 'Prénom',
+      firstnamePlaceholder: 'Jean',
+      lastnameLabel: 'Nom',
+      lastnamePlaceholder: 'Dupont',
     },
   },
   auth: {
+    fields: {
+      passwordLabel: 'Mot de passe',
+      confirmPasswordLabel: 'Confirmation mot de passe',
+    },
     login: {
       title: 'Connexion',
       submitBtn: 'Se connecter',
@@ -54,10 +62,40 @@ export const fr: TranslationDict = {
         specialChar: '1 caractère spécial',
       },
     },
+    welcomeMessage: (name: string) => `Bienvenue, ${name}!`,
   },
-  home: {
-    title: 'À la une',
-    subtitle: 'Découvrez les dernières publications.',
+  articles: {
+    feed: {
+      title: 'À la une',
+      subtitle: 'Découvrez les dernières publications.',
+      actions: {
+        createArticle: 'Rédiger un nouvel article',
+      },
+      errors: {
+        loadFailed: 'Impossible de charger le flux.',
+      },
+      emptyState: {
+        title: 'Le fil est vide',
+        suggestion: '',
+      },
+    },
+    create: {
+      title: 'Rédiger un article',
+      subtitle: 'Partagez vos idées et vos connaissances avec la communauté.',
+      submitBtn: "Publier l'article",
+      fields: {
+        titleLabel: "Titre de l'article",
+        titlePlaceholder: 'Ex: Architecture Angular v22...',
+        categoryLabel: 'Catégorie',
+        categoryPlaceholder: 'Choisir une catégorie',
+        imageLabel: "Image de l'article",
+        descriptionLabel: 'Description',
+        descriptionPlaceholder: 'Description ou contenu de votre article...',
+      },
+      errors: {
+        categoryError: 'Impossible de charger les catégories',
+      },
+    },
   },
   validation: {
     messages: {
@@ -70,19 +108,7 @@ export const fr: TranslationDict = {
     },
   },
   navigation: {
-    [APP_ROUTES.home.root]: 'Accueil',
-    [APP_ROUTES.dashboard.root]: 'Tableau de bord',
-  },
-  feed: {
-    actions: {
-      createArticle: 'Rédiger un nouvel article',
-    },
-    errors: {
-      loadFailed: 'Impossible de charger le flux.',
-    },
-    emptyState: {
-      title: 'Le fil est vide',
-      suggestion: '',
-    },
+    [APP_ROUTES.ARTICLES.ROOT]: "Flux d'articles",
+    [APP_ROUTES.ARTICLES.CREATE]: 'Nouvel article',
   },
 };

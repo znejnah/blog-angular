@@ -41,10 +41,11 @@ export class RegisterFormComponent {
     pattern(schemaPath.email, REGEX_PATTERNS.EMAIL);
 
     required(schemaPath.firstname);
-    minLength(schemaPath.firstname, VALIDATION_RULES.NAME_MIN_LENGTH);
+    pattern(schemaPath.firstname, REGEX_PATTERNS.NOT_EMPTY);
+    minLength(schemaPath.firstname, VALIDATION_RULES.AUTH.NAME_MIN_LENGTH);
 
     required(schemaPath.lastname);
-    minLength(schemaPath.lastname, VALIDATION_RULES.NAME_MIN_LENGTH);
+    minLength(schemaPath.lastname, VALIDATION_RULES.AUTH.NAME_MIN_LENGTH);
 
     required(schemaPath.password);
     pattern(schemaPath.password, REGEX_PATTERNS.STRONG_PASSWORD);
@@ -62,6 +63,7 @@ export class RegisterFormComponent {
   protected onSubmit(): void {
     if (this.registerForm().invalid()) return;
 
-    this.submitRegister.emit(this.registerModel());
+    const { confirmPassword, ...payload } = this.registerModel();
+    this.submitRegister.emit(payload);
   }
 }

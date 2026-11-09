@@ -1,11 +1,11 @@
 <app-register-form
   [texts]="i18nService.texts()"
-  [isLoading]="authService.isLoading()"
+  [isLoading]="authStore.isLoading()"
   [apiError]="translatedApiError()"
-  (submitRegister)="onRegisterAttempt($event)"
+  (submitRegister)="onRegisterSubmit($event)"
 >
   <div class="mt-6 text-center text-sm text-gray-600">
-    <app-text-link [to]="['/', routes.auth.root, routes.auth.login]">{{
+    <app-text-link [to]="['/', routes.AUTH.ROOT, routes.AUTH.LOGIN]">{{
       i18nService.texts().auth.register.hasAccountLink
     }}</app-text-link>
   </div>

@@ -1,13 +1,11 @@
 export const APP_ROUTES = {
-  auth: {
-    root: 'auth',
-    login: 'login',
-    register: 'register',
+  AUTH: {
+    ROOT: 'auth',
+    LOGIN: 'login',
+    REGISTER: 'register',
   },
-  dashboard: {
-    root: 'dashboard',
-  },
-  home: {
-    root: 'home',
+  ARTICLES: {
+    ROOT: 'feed',
+    CREATE: 'create-article',
   },
 };

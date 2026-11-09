@@ -1,0 +1,41 @@
+<div aria-live="polite" class="fixed top-6 right-6 z-[100] flex flex-col gap-4 pointer-events-none">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <div
+      class="relative pointer-events-auto flex items-start p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 min-w-[320px] max-w-md animate-slide-in-right overflow-hidden"
+    >
+      <div class="flex-shrink-0 mr-3 mt-0.5">
+        <app-icon
+          [name]="toast.type"
+          class="block w-5 h-5"
+          [class.text-green-500]="toast.type === 'success'"
+          [class.text-red-500]="toast.type === 'error'"
+          [class.text-amber-500]="toast.type === 'warning'"
+          [class.text-blue-500]="toast.type === 'info'"
+        />
+      </div>
+
+      <div class="flex-1 text-sm font-medium text-gray-700 dark:text-gray-200">
+        {{ toast.message }}
+      </div>
+
+      <button
+        (click)="toastService.remove(toast.id)"
+        class="ml-4 flex-shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none transition-colors"
+        aria-label="Fermer"
+      >
+        <app-icon [name]="closeIcon" class="block w-4 h-4" />
+      </button>
+
+      @if (toast.durationMs && toast.durationMs > 0) {
+        <div
+          class="absolute bottom-0 left-0 h-1 animate-shrink-bar"
+          [class.bg-green-500]="toast.type === 'success'"
+          [class.bg-red-500]="toast.type === 'error'"
+          [class.bg-amber-500]="toast.type === 'warning'"
+          [class.bg-blue-500]="toast.type === 'info'"
+          [style.animation-duration]="toast.durationMs + 'ms'"
+        ></div>
+      }
+    </div>
+  }
+</div>
