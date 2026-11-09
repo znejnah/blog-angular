@@ -1,4 +1,5 @@
-import { inject, resource, Service, signal } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ArticleApiService } from './article-api.service';
@@ -9,19 +10,16 @@ import { Article } from './models/article.model';
 export class ArticleStore {
   private readonly api = inject(ArticleApiService);
 
-  readonly articlesRessource = resource<Article[], void>({
-    loader: async () => {
-      if (environment.production) {
-        return await firstValueFrom(this.api.fetchArticles());
-      } else {
-        // return await this.api.fetchMockArticles();
-        return await firstValueFrom(this.api.fetchArticles());
-      }
-    },
+  readonly articlesRessource = rxResource<Article[], void>({
+    stream: () => (environment.production ? this.api.fetchArticles() : this.api.fetchArticles()),
   });
 
   private readonly _isCreating = signal<boolean>(false);
   readonly isCreating = this._isCreating.asReadonly();
+
+  refreshArticle(): void {
+    this.articlesRessource.reload();
+  }
 
   async create(payload: CreateArticleRequestDto): Promise<Article> {
     this._isCreating.set(true);

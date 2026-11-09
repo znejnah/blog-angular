@@ -1,6 +1,13 @@
 <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex h-full">
-  <div class="h-16 flex items-center px-6 border-b border-gray-200">
-    <span class="text-xl font-bold text-blue-600">MyBlog - Angular</span>
+  <div
+    (click)="onLogoClick()"
+    class="cursor-pointer hover:opacity-80 transition-opacity h-16 flex justify-center items-center px-6 border-b border-gray-200"
+  >
+    <img
+      src="/favicon.ico"
+      alt="{{ i18nService.texts().common.siteLogo }}"
+      class="max-h-full w-auto"
+    />
   </div>
 
   <nav class="flex-1 p-4 space-y-1">

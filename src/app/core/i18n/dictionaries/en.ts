@@ -5,6 +5,7 @@ import { TranslationDict } from '../translation.type';
 
 export const en: TranslationDict = {
   common: {
+    siteLogo: 'My Site Logo',
     actions: {
       close: 'Close',
       logout: 'Logout',

@@ -4,6 +4,7 @@ import { APP_ROUTES } from '../constants/app-routes.constant';
 
 export type TranslationDict = {
   common: {
+    siteLogo: string;
     actions: {
       close: string;
       logout: string;
