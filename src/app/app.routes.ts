@@ -8,6 +8,7 @@ import { CreatePageComponent } from './pages/articles/create-page/create-page.co
 import { FeedPageComponent } from './pages/articles/feed-page/feed-page.component';
 import { LoginPageComponent } from './pages/auth/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
+import { CategoriesPageComponent } from './pages/categories/categories-page/categories-page.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
     children: [
       { path: APP_ROUTES.ARTICLES.ROOT, component: FeedPageComponent },
       { path: APP_ROUTES.ARTICLES.CREATE, component: CreatePageComponent },
+      { path: APP_ROUTES.CATEGORIES.ROOT, component: CategoriesPageComponent },
       { path: '', redirectTo: APP_ROUTES.ARTICLES.ROOT, pathMatch: 'full' },
     ],
   },

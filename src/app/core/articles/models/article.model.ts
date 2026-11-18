@@ -1,3 +1,4 @@
+import { Category } from '../../categories/models/category.model';
 import { User } from '../../models/user.model';
 
 export type Article = {
@@ -11,8 +12,3 @@ export type Article = {
 };
 
 type Author = Omit<User, 'email'>;
-
-type Category = {
-  id: string;
-  title: string;
-};

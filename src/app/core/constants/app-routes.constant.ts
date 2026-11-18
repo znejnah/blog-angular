@@ -8,4 +8,7 @@ export const APP_ROUTES = {
     ROOT: 'feed',
     CREATE: 'create-article',
   },
+  CATEGORIES: {
+    ROOT: 'categories',
+  },
 };

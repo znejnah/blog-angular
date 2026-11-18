@@ -7,6 +7,7 @@ export const ICON_NAMES = {
   LOGOUT: 'logout',
   HOME: 'home',
   DASHBOARD: 'dashboard',
+  CATEGORY: 'category',
   HEART: 'heart',
   CHAT: 'chat',
   WRITE: 'write',
@@ -14,6 +15,10 @@ export const ICON_NAMES = {
   SUCCESS: 'success',
   WARNING: 'warning',
   ERROR: 'error',
+  SEARCH: 'search',
+  ADD_CATEGORY: 'add-category',
+  EDIT: 'edit',
+  DELETE: 'delete',
 };
 
 export type IconName = (typeof ICON_NAMES)[keyof typeof ICON_NAMES];

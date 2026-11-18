@@ -1,0 +1,44 @@
+<div class="mx-auto flex h-[calc(100vh-80px)] max-w-7xl flex-col px-4 py-8 sm:px-6 lg:px-8">
+  <div class="m-6 flex items-center justify-between gap-4">
+    <form class="relative max-w-sm flex-auto">
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <app-icon [name]="iconNames.SEARCH" class="block h-5 w-5 text-gray-400"></app-icon>
+      </div>
+
+      <input
+        type="text"
+        class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+        [placeholder]="i18nService.texts().categories.searchInput"
+        [value]="searchForm.search().value()"
+        (input)="searchForm.search().value.set($event.target.value)"
+      />
+    </form>
+
+    <app-icon-button
+      [icon]="iconNames.ADD_CATEGORY"
+      [ariaLabel]="i18nService.texts().categories.new"
+      (clicked)="isCreating.set(true)"
+    >
+    </app-icon-button>
+  </div>
+
+  @for (category of filteredCategories(); track category.id) {
+    <app-category-card [category]="category" [texts]="i18nService.texts()"></app-category-card>
+  } @empty {
+    <div class="col-span-full py-12 text-center">
+      <app-icon [name]="iconNames.SEARCH" class="mx-auto h-12 w-12 text-gray-300"></app-icon>
+      <h3 class="mt-2 text-sm font-semibold text-gray-900">
+        {{ i18nService.texts().categories.emptyState.title }}
+      </h3>
+      <p class="mt-1 text-sm text-gray-500">
+        {{
+          i18nService.texts().categories.emptyState.description(searchForm.search().value() || '')
+        }}
+      </p>
+    </div>
+  }
+
+  @if (isCreating()) {
+    <app-create (close)="isCreating.set(false)" />
+  }
+</div>

@@ -53,7 +53,7 @@ describe('FormInputComponent', () => {
 
     // ASSERT : expect Angular to find the element
     expect(asteriskElement).toBeTruthy();
-    // expect the element text to be "*" (Attention à la parenthèse après trim !)
+    // expect the element text to be "*"
     expect(asteriskElement.nativeElement.textContent.trim()).toBe('*');
   });
 });

@@ -13,6 +13,8 @@ export const fr: TranslationDict = {
       seeMore: 'Voir plus',
       retry: 'Réessayer',
       cancel: 'Annuler',
+      edit: 'Éditer',
+      delete: 'Supprimer',
     },
     states: {
       loading: 'Chargement...',
@@ -23,6 +25,7 @@ export const fr: TranslationDict = {
       network: 'Connexion au serveur perdue. Vérifiez votre internet.',
       timeout: 'Le serveur met trop de temps à répondre.',
     },
+    void: '',
   },
   users: {
     fields: {
@@ -97,6 +100,18 @@ export const fr: TranslationDict = {
       },
     },
   },
+  categories: {
+    title: 'Catégories',
+    subtitle: 'Gérez la liste des catégories pour classer vos articles.',
+    searchInput: 'Rechercher une catégorie...',
+    new: 'Nouvelle catégorie',
+    emptyState: {
+      title: 'Aucun résultat',
+      description: (searchTerm: string) =>
+        `Nous n'avons trouvé aucune catégorie correspondant à "${searchTerm}".`,
+      clearSearchBtn: 'Clear search',
+    },
+  },
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: 'Ce champ est obligatoire.',
@@ -110,5 +125,6 @@ export const fr: TranslationDict = {
   navigation: {
     [APP_ROUTES.ARTICLES.ROOT]: "Flux d'articles",
     [APP_ROUTES.ARTICLES.CREATE]: 'Nouvel article',
+    [APP_ROUTES.CATEGORIES.ROOT]: 'Catégories',
   },
 };

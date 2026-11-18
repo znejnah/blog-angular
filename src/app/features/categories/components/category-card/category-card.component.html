@@ -1,0 +1,19 @@
+<div
+  class="flex items-center justify-between rounded-lg bg-white px-5 py-3 shadow ring-1 ring-gray-200 transition-all hover:shadow-md"
+>
+  <h3 class="text-base font-semibold text-gray-900 truncate pr-4">
+    {{ category().title }}
+  </h3>
+
+  <div class="flex items-center gap-2 shrink-0">
+    <app-icon-button
+      [icon]="iconNames.EDIT"
+      [ariaLabel]="texts().common.actions.edit"
+    ></app-icon-button>
+    <app-icon-button
+      variant="danger"
+      [icon]="iconNames.DELETE"
+      [ariaLabel]="texts().common.actions.delete"
+    ></app-icon-button>
+  </div>
+</div>

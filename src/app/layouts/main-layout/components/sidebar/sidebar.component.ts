@@ -13,7 +13,6 @@ import { SidebarItemComponent } from './sidebar-item.component';
 })
 export class SidebarComponent {
   protected readonly i18nService = inject(I18nService);
-  private readonly routes = APP_ROUTES;
   private readonly router = inject(Router);
   private readonly articleStore = inject(ArticleStore);
 
@@ -28,6 +27,12 @@ export class SidebarComponent {
       route: ['/', APP_ROUTES.ARTICLES.CREATE],
       icon: ICON_NAMES.WRITE,
       label: this.i18nService.texts().navigation[APP_ROUTES.ARTICLES.CREATE],
+      exact: true,
+    },
+    {
+      route: ['/', APP_ROUTES.CATEGORIES.ROOT],
+      icon: ICON_NAMES.CATEGORY,
+      label: this.i18nService.texts().navigation[APP_ROUTES.CATEGORIES.ROOT],
       exact: true,
     },
   ]);

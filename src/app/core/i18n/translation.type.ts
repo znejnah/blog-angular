@@ -12,6 +12,8 @@ export type TranslationDict = {
       seeMore: string;
       retry: string;
       cancel: string;
+      edit: string;
+      delete: string;
     };
     states: {
       loading: string;
@@ -22,6 +24,7 @@ export type TranslationDict = {
       network: string;
       timeout: string;
     };
+    void: string;
   };
   users: {
     fields: {
@@ -96,6 +99,17 @@ export type TranslationDict = {
       };
     };
   };
+  categories: {
+    title: string;
+    subtitle: string;
+    searchInput: string;
+    new: string;
+    emptyState: {
+      title: string;
+      description: (searchTerm: string) => string;
+      clearSearchBtn: string;
+    };
+  };
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: string;
@@ -109,5 +123,6 @@ export type TranslationDict = {
   navigation: {
     [APP_ROUTES.ARTICLES.ROOT]: string;
     [APP_ROUTES.ARTICLES.CREATE]: string;
+    [APP_ROUTES.CATEGORIES.ROOT]: string;
   };
 };

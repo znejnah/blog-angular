@@ -13,6 +13,8 @@ export const en: TranslationDict = {
       seeMore: 'See more',
       retry: 'Try again',
       cancel: 'Cancel',
+      edit: 'Edit',
+      delete: 'Delete',
     },
     states: {
       loading: 'Loading...',
@@ -23,6 +25,7 @@ export const en: TranslationDict = {
       network: 'Connection to the server lost. Check your internet.',
       timeout: 'The server is taking too long to respond.',
     },
+    void: '',
   },
   users: {
     fields: {
@@ -97,6 +100,18 @@ export const en: TranslationDict = {
       },
     },
   },
+  categories: {
+    title: 'Categories',
+    subtitle: 'Manage the list of categories to organize your items.',
+    searchInput: 'Search for a category...',
+    new: 'New category',
+    emptyState: {
+      title: 'No results found',
+      description: (searchTerm: string) =>
+        `We couldn't find any category matching "${searchTerm}".`,
+      clearSearchBtn: 'Clear search',
+    },
+  },
   validation: {
     messages: {
       [VALIDATION_ERRORS.REQUIRED]: 'This field is required.',
@@ -110,5 +125,6 @@ export const en: TranslationDict = {
   navigation: {
     [APP_ROUTES.ARTICLES.ROOT]: 'Articles feed',
     [APP_ROUTES.ARTICLES.CREATE]: 'New article',
+    [APP_ROUTES.CATEGORIES.ROOT]: 'Categories',
   },
 };

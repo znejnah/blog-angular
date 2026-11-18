@@ -1,3 +1,5 @@
+import { Category } from '../../models/category.model';
+
 export type CategoryDto = {
   id: string;
   title: string;
