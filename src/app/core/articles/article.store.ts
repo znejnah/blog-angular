@@ -24,7 +24,7 @@ export class ArticleStore {
   async create(payload: CreateArticleRequestDto): Promise<Article> {
     this._isCreating.set(true);
     try {
-      const newArticle = await firstValueFrom(this.api.create(payload));
+      const newArticle = await firstValueFrom(this.api.createArticle(payload));
       this.articlesRessource.reload();
       return newArticle;
     } catch (error) {

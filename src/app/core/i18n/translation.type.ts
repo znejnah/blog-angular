@@ -103,11 +103,20 @@ export type TranslationDict = {
     title: string;
     subtitle: string;
     searchInput: string;
-    new: string;
     emptyState: {
       title: string;
       description: (searchTerm: string) => string;
       clearSearchBtn: string;
+    };
+    create: {
+      title: string;
+      submitBtn: string;
+      fields: {
+        titleLabel: string;
+        titlePlaceholder: string;
+        descriptionLabel: string;
+        descriptionPlaceholder: string;
+      };
     };
   };
   validation: {

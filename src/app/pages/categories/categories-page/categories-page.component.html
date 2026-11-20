@@ -16,29 +16,31 @@
 
     <app-icon-button
       [icon]="iconNames.ADD_CATEGORY"
-      [ariaLabel]="i18nService.texts().categories.new"
+      [ariaLabel]="i18nService.texts().categories.create.title"
       (clicked)="isCreating.set(true)"
     >
     </app-icon-button>
   </div>
 
-  @for (category of filteredCategories(); track category.id) {
-    <app-category-card [category]="category" [texts]="i18nService.texts()"></app-category-card>
-  } @empty {
-    <div class="col-span-full py-12 text-center">
-      <app-icon [name]="iconNames.SEARCH" class="mx-auto h-12 w-12 text-gray-300"></app-icon>
-      <h3 class="mt-2 text-sm font-semibold text-gray-900">
-        {{ i18nService.texts().categories.emptyState.title }}
-      </h3>
-      <p class="mt-1 text-sm text-gray-500">
-        {{
-          i18nService.texts().categories.emptyState.description(searchForm.search().value() || '')
-        }}
-      </p>
-    </div>
-  }
+  <div class="grid gap-2">
+    @for (category of filteredCategories(); track category.id) {
+      <app-category-card [category]="category" [texts]="i18nService.texts()"></app-category-card>
+    } @empty {
+      <div class="col-span-full py-12 text-center">
+        <app-icon [name]="iconNames.SEARCH" class="mx-auto h-12 w-12 text-gray-300"></app-icon>
+        <h3 class="mt-2 text-sm font-semibold text-gray-900">
+          {{ i18nService.texts().categories.emptyState.title }}
+        </h3>
+        <p class="mt-1 text-sm text-gray-500">
+          {{
+            i18nService.texts().categories.emptyState.description(searchForm.search().value() || '')
+          }}
+        </p>
+      </div>
+    }
+  </div>
 
   @if (isCreating()) {
-    <app-create (close)="isCreating.set(false)" />
+    <app-create [texts]="i18nService.texts()" (close)="isCreating.set(false)" />
   }
 </div>

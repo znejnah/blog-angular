@@ -104,12 +104,21 @@ export const en: TranslationDict = {
     title: 'Categories',
     subtitle: 'Manage the list of categories to organize your items.',
     searchInput: 'Search for a category...',
-    new: 'New category',
     emptyState: {
       title: 'No results found',
       description: (searchTerm: string) =>
         `We couldn't find any category matching "${searchTerm}".`,
       clearSearchBtn: 'Clear search',
+    },
+    create: {
+      title: 'New category',
+      submitBtn: 'Add category',
+      fields: {
+        titleLabel: 'Category title',
+        titlePlaceholder: 'Ex: Technologies...',
+        descriptionLabel: 'Description',
+        descriptionPlaceholder: 'Short description (optional)',
+      },
     },
   },
   validation: {

@@ -33,7 +33,7 @@ export class CategoryApiService {
     });
   }
 
-  create(createCategoryDto: CreateCategoryRequestDto) {
+  createCategory(createCategoryDto: CreateCategoryRequestDto) {
     return this.http.post(this.baseUrl + CATEGORY_ENDPOINTS.CREATE, createCategoryDto);
   }
 }

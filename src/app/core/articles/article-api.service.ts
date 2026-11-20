@@ -24,7 +24,7 @@ export class ArticleApiService {
     return MOCK_ARTICLES;
   }
 
-  create(payload: CreateArticleRequestDto): Observable<Article> {
+  createArticle(payload: CreateArticleRequestDto): Observable<Article> {
     const formData = new FormData();
     const { categoryId, ...apiFields } = payload;
 
